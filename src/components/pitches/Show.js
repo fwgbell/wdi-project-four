@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { authorizationHeader } from '../../lib/auth';
 
 class PitchShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // this.handleDelete = this.handleDelete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -14,11 +15,11 @@ class PitchShow extends React.Component {
       .then(result => this.setState({ pitch: result.data }));
   }
 
-  // handleDelete(event){
-  //   event.preventDefault();
-  //   axios.delete(`/api/topics/${this.state.topic._id}`)
-  //     .then( () => this.props.history.push('/topics'));
-  // }
+  handleDelete(event){
+    event.preventDefault();
+    axios.delete(`/api/pitches/${this.state.pitch._id}`, authorizationHeader())
+      .then( () => this.props.history.push('/pitches'));
+  }
 
   render() {
     const pitch = this.state.pitch;

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { authorizationHeader} from '../../lib/auth';
 
 class NewPitch extends React.Component {
   constructor(props){
@@ -10,7 +11,7 @@ class NewPitch extends React.Component {
   }
   handleSubmit(event){
     event.preventDefault();
-    axios.post('/api/pitches', this.state)
+    axios.post('/api/pitches', this.state, authorizationHeader())
       .then(result => {
         this.props.history.push(`/pitches/${ result.data._id }`);
       });
