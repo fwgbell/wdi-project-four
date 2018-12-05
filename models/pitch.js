@@ -14,4 +14,13 @@ const pitchSchema = new mongoose.Schema({
   }]
 });
 
+pitchSchema.virtual('averageRating')
+  .get(function() {
+    return Math.round(this.reviews.reduce((sum, review) => {
+      return sum + review.rating;
+    }, 0) / this.reviews.length);
+  });
+
+pitchSchema.set('toJSON', { virtuals: true });
+
 module.exports = mongoose.model('Pitch', pitchSchema);
