@@ -30,7 +30,7 @@ mongoose.connect(dbURI, (err, db) => {
 
   Pitch.create([{
     uploadedBy: userIds[0],
-    name: 'Chaucer House - Churchill Gardens',
+    name: 'Churchill Gardens',
     lat: 51.486425,
     lng: -0.140997,
     image: 'https://savethepitch.files.wordpress.com/2017/02/chaucer-house-churchill-gardens.jpg',

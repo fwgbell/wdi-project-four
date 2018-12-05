@@ -10,7 +10,8 @@ const pitchSchema = new mongoose.Schema({
     title: { type: String, required: 'This field is required' },
     reviewedBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
     rating: { type: Number, required: 'This field is required' },
-    content: { type: String, required: 'This field is required' }
+    content: { type: String, required: 'This field is required' },
+    time: { type: Date, default: Date.now }
   }]
 });
 
