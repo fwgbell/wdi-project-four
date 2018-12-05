@@ -9,11 +9,10 @@ import Header from './components/Header';
 import Home from './components/Home';
 // import AuthLogin from './components/auth/Login';
 // import AuthRegister from './components/auth/Register';
-// import PitchIndex from './components/pitches/Index';
+import PitchIndex from './components/pitches/Index';
 // import PitchShow from './components/pitches/Show';
 // import PitchNew from './components/pitches/New';
 
-// <Route exact path='/pitches' component={PitchIndex} />
 // <Route exact path='/pitches/new' component={PitchNew} />
 // <Route path='/pitches/:id' component={PitchShow}/>
 // <Route path="/login" component={AuthLogin} />
@@ -29,6 +28,7 @@ class App extends React.Component {
           <main className="container">
             <Switch>
               <Route exact path='/' component={Home}/>
+              <Route exact path='/pitches' component={PitchIndex} />
             </Switch>
           </main>
         </div>

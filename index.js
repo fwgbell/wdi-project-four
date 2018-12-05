@@ -4,6 +4,7 @@ const router = require('./config/router');
 const { port, dbURI } = require('./config/environment');
 const errorHandler = require('./lib/errorHandler');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 const app = express();
 
@@ -13,6 +14,8 @@ mongoose.connect(dbURI);
 app.use(express.static(`${__dirname}/public`));
 
 app.use(bodyParser.json());
+
+app.use(morgan('dev'));
 
 app.use('/api', router);
 

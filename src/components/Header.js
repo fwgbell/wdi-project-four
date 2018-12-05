@@ -23,6 +23,7 @@ class Header extends React.Component {
     return (
       <nav className="navbar is-info">
         <div className="navbar-brand">
+          Save The Pitch
         </div>
         <div className="navbar-end">
           <Link className="navbar-item" to={'/'}>Home</Link>
