@@ -28,6 +28,7 @@ class Header extends React.Component {
         <div className="navbar-end">
           <Link className="navbar-item" to={'/'}>Home</Link>
           <Link className="navbar-item" to={'/pitches'}>Pitches</Link>
+          <Link className="navbar-item" to={'/pitches/new'}>Add a pitch</Link>
         </div>
       </nav>
     );

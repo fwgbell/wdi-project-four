@@ -11,9 +11,8 @@ import Home from './components/Home';
 // import AuthRegister from './components/auth/Register';
 import PitchIndex from './components/pitches/Index';
 import PitchShow from './components/pitches/Show';
-// import PitchNew from './components/pitches/New';
+import PitchNew from './components/pitches/New';
 
-// <Route exact path='/pitches/new' component={PitchNew} />
 // <Route path="/login" component={AuthLogin} />
 // <Route path="/register" component={AuthRegister} />
 
@@ -28,6 +27,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/pitches' component={PitchIndex} />
+              <Route exact path='/pitches/new' component={PitchNew} />
               <Route path='/pitches/:id' component={PitchShow}/>
             </Switch>
           </main>
