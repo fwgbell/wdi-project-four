@@ -21,7 +21,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           <Header />
-          <main className="container">
+          <main>
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/pitches' component={PitchIndex} />
