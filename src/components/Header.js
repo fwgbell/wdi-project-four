@@ -29,7 +29,7 @@ class Header extends React.Component {
               <div className="navbar-dropdown is-boxed">
                 <Link className="navbar-item" to={'/'}>Home</Link>
                 <Link className="navbar-item" to={'/pitches'}>Pitches</Link>
-                <Link className="navbar-item" to={'/pitches/new'}>Add a pitch</Link>
+                {isAuthenticated() && <Link className="navbar-item" to={'/pitches/new'}>Add a pitch</Link>}
                 {isAuthenticated() && <a onClick={this.handleLogout} className="navbar-item" to='/logout'>Log Out</a>}
                 {!isAuthenticated() && <Link className="navbar-item" to='/login'>Log In</Link>}
                 {!isAuthenticated() && <Link className="navbar-item" to='/register'>Register</Link>}

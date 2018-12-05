@@ -15,8 +15,8 @@ class PitchIndex extends React.Component {
 
   render() {
     return (
-      <section className="columns is-multiline">
-        <h1 className="title column is-12">Pitches</h1>
+      <section className="indexPage columns is-multiline">
+        <h1 className="title column is-12">Doing It For The Pitches</h1>
         {this.state.pitches
           ?
           this.state.pitches.map(pitch => <PitchWrapper key={pitch._id} pitch={pitch}/>)

@@ -37,7 +37,7 @@
   }
   @media only screen and (max-width: 1088px) {
     .navbar-link{
-      padding-left: 0;
+      padding: 0;
       width: 100vw;
       align-items: center;
       justify-content: space-around;
@@ -45,10 +45,12 @@
         display: none;
       }
       .navbar-dropdown{
+        padding: 0;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         a{
-          width: 48vw;
+          min-width: 100px;
           margin-left: 0;
           padding: 0;
         }
@@ -69,7 +71,7 @@ main{
 }
 
 
-.homeDiv{
+.homePage{
   background-image: url(https://savethepitch.files.wordpress.com/2017/02/img_6453.jpg);
   background-position: bottom;
   background-size: cover;
@@ -118,6 +120,32 @@ main{
         width: 90%;
         font-size: 15px;
       }
+    }
+  }
+}
+
+.indexPage{
+  h1{
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+  }
+  .pitchWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    h2{
+      width: 100%;
+      text-align: center;
+      font-size: 25px;
+      color: black;
+    }
+    img{
+      width: 95%;
+      height: 95%;
+      max-height: 500px;
     }
   }
 }
