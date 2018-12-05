@@ -4,7 +4,7 @@ function Home() {
   return (
     <div className="homeDiv">
       <div>
-        <h1>Home</h1>
+        <h1>Save The Pitch</h1>
         <p>
           We at Save the Pitch are on a mission to get young people away from their
           screens and out onto the pitches, playgrounds and cages of inner city London.
