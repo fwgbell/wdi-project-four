@@ -18,17 +18,24 @@ class Header extends React.Component {
 
   render() {
     return (
-      <nav className="navbar is-info">
+      <nav className="navbar">
         <div className="navbar-brand">
-          Save The Pitch
+          <img src="https://savethepitch.files.wordpress.com/2017/02/cropped-white-save-logo-copy.jpg"/>
         </div>
         <div className="navbar-end">
-          <Link className="navbar-item" to={'/'}>Home</Link>
-          <Link className="navbar-item" to={'/pitches'}>Pitches</Link>
-          <Link className="navbar-item" to={'/pitches/new'}>Add a pitch</Link>
-          {isAuthenticated() && <a onClick={this.handleLogout} className="navbar-item" to='/logout'>Log Out</a>}
-          {!isAuthenticated() && <Link className="navbar-item" to='/login'>Log In</Link>}
-          {!isAuthenticated() && <Link className="navbar-item" to='/register'>Register</Link>}
+          <div className="navbar-item has-dropdown is-hoverable">
+            <div className="navbar-link is-arrowless">
+              <i className="fas fa-angle-up"></i>
+              <div className="navbar-dropdown is-boxed">
+                <Link className="navbar-item" to={'/'}>Home</Link>
+                <Link className="navbar-item" to={'/pitches'}>Pitches</Link>
+                <Link className="navbar-item" to={'/pitches/new'}>Add a pitch</Link>
+                {isAuthenticated() && <a onClick={this.handleLogout} className="navbar-item" to='/logout'>Log Out</a>}
+                {!isAuthenticated() && <Link className="navbar-item" to='/login'>Log In</Link>}
+                {!isAuthenticated() && <Link className="navbar-item" to='/register'>Register</Link>}
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
     );
