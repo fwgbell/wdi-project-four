@@ -7,13 +7,20 @@ import 'bulma';
 
 import Header from './components/Header';
 import Home from './components/Home';
-import AuthLogin from './components/auth/Login';
-import AuthRegister from './components/auth/Register';
-import PitchIndex from './coomoponents/pitches/Index';
-import PitchShow from './coomoponents/pitches/Show';
-import PitchNew from './coomoponents/pitches/New';
+// import AuthLogin from './components/auth/Login';
+// import AuthRegister from './components/auth/Register';
+// import PitchIndex from './components/pitches/Index';
+// import PitchShow from './components/pitches/Show';
+// import PitchNew from './components/pitches/New';
+
+// <Route exact path='/pitches' component={PitchIndex} />
+// <Route exact path='/pitches/new' component={PitchNew} />
+// <Route path='/pitches/:id' component={PitchShow}/>
+// <Route path="/login" component={AuthLogin} />
+// <Route path="/register" component={AuthRegister} />
 
 class App extends React.Component {
+
   render() {
     return (
       <BrowserRouter>
@@ -22,11 +29,6 @@ class App extends React.Component {
           <main className="container">
             <Switch>
               <Route exact path='/' component={Home}/>
-              <Route exact path='/pitches' component={PitchIndex} />
-              <Route exact path='/pitches/new' component={PitchNew} />
-              <Route path='/pitches/:id' component={PitchShow}/>
-              <Route path="/login" component={AuthLogin} />
-              <Route path="/register" component={AuthRegister} />
             </Switch>
           </main>
         </div>
