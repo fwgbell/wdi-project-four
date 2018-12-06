@@ -9,7 +9,8 @@ function createRoute(req, res, next){
       pitch.reviews.push(req.body);
       return pitch.save();
     })
-    .then(pitch => res.json(pitch))
+    .then(pitch => Pitch.populate(pitch, 'uploadedBy reviews.reviewedBy'))
+    .then(pitch =>  res.json(pitch))
     .catch(next);
 }
 
@@ -25,6 +26,7 @@ function updateRoute(req, res, next){
       review.set(req.body);
       return pitch.save();
     })
+    .then(pitch => Pitch.populate(pitch, 'uploadedBy reviews.reviewedBy'))
     .then(pitch => res.json(pitch))
     .catch(next);
 }

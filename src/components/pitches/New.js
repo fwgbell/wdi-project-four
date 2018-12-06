@@ -13,7 +13,7 @@ class NewPitch extends React.Component {
     event.preventDefault();
     const sendObject = this.state;
     sendObject.uploadedBy = decodeToken().sub;
-    axios.post('/api/pitches', this.state, authorizationHeader())
+    axios.post('/api/pitches', sendObject, authorizationHeader())
       .then(result => {
         this.props.history.push(`/pitches/${ result.data._id }`);
       });

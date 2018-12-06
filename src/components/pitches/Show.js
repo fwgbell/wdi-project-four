@@ -8,8 +8,12 @@ import MapBox from '../common/MapBox';
 class PitchShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      rating: 3
+    };
     this.deletePitch = this.deletePitch.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -22,7 +26,24 @@ class PitchShow extends React.Component {
       .then( () => this.props.history.push('/pitches'));
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+    const sendObject = {
+      title: this.state.title,
+      content: this.state.content,
+      rating: this.state.rating,
+      reviewedBy: decodeToken().sub
+    };
+    axios.post(`/api/pitches/${this.state.pitch._id}/reviews`, sendObject, authorizationHeader())
+      .then(result => this.setState({ pitch: result.data, title: null, content: null, rating: 3 }));
+  }
+
+  handleChange({ target: { name, value }}){
+    this.setState({ [name]: value });
+  }
+
   deleteReview = review =>{
+    console.log(this.state);
     axios.delete(`/api/pitches/${this.state.pitch._id}/reviews/${review._id}`, authorizationHeader())
       .then(result => this.setState({ pitch: result.data }));
   }
@@ -78,23 +99,23 @@ class PitchShow extends React.Component {
                 <p>No reviews yet</p>
               }
               {!pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub) &&
-                <form>
+                <form onSubmit={this.handleSubmit}>
                   <div className="field">
                     <label className="label">Title</label>
                     <div className="control">
-                      <input className="input" required/>
+                      <input className="input" onChange={this.handleChange} value={this.state.title || ''} name="title" required/>
                     </div>
                   </div>
                   <div className="field">
                     <label className="label">Rating</label>
                     <div className="control">
-                      <input type="range" min="1" max="5" />
+                      <input type="range" min="1" max="5" onChange={this.handleChange} value={this.state.rating || ''} name="rating" />
                     </div>
                   </div>
                   <div className="field">
                     <label className="label">Review</label>
                     <div className="control">
-                      <textarea rows="4" required></textarea>
+                      <textarea rows="4" onChange={this.handleChange} value={this.state.content || ''} name="content" required></textarea>
                     </div>
                   </div>
                   <button className="button is-rounded is-info">Submit</button>
