@@ -62,6 +62,12 @@ class PitchShow extends React.Component {
                     <h4 className="column is-8">{review.title}</h4>
                     <h5 className="column is-4">{review.reviewedBy.username} - {review.rating}/5</h5>
                     <p className="column is-12">{review.content}</p>
+                    {review.reviewedBy._id === decodeToken().sub &&
+                      <div>
+                        <button className="button is-rounded">Edit</button>
+                        <button className="button is-rounded is-danger">Delete</button>
+                      </div>
+                    }
                   </div>)
                 :
                 <p>No reviews yet</p>}

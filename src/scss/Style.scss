@@ -169,7 +169,8 @@ main{
     }
     .buttonWrapperShowPage{
       button{
-        margin-left: 2vw;
+        margin-left: 2rem;
+        width: 5rem;
       }
     }
   }
@@ -177,7 +178,6 @@ main{
     h3{
       font-size: 30px;
       font-weight: bold;
-
     }
     hr{
       margin-top: 0;
@@ -199,6 +199,15 @@ main{
       p{
         padding: 0.75rem;
       }
+      div{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        button{
+          margin: 1%;
+          width: 5rem;
+        }
+      }
       @media only screen and (max-width: 800px) {
         h4{
           border: 0;
@@ -208,6 +217,9 @@ main{
         h5{
           text-align: center;
           padding: 0
+        }
+        p{
+          padding: 1.5rem;
         }
       }
     }
