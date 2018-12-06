@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const MapBox = ({ userPosition, pitches }) => {
   return (
     <div id='map'>
-      <Map center={userPosition || pitches[0].location} zoom={14}>
+      <Map center={userPosition || [pitches[0].lat, pitches[0].lng]} zoom={14}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
