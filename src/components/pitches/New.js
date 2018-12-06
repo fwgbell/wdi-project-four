@@ -29,25 +29,25 @@ class NewPitch extends React.Component {
           <div className="field">
             <label className="label">Pitch Name</label>
             <div className="control">
-              <input onChange={this.handleChange} value={this.state.name || ''} name="name" className="input" type="text" />
+              <input onChange={this.handleChange} value={this.state.name || ''} name="name" className="input" type="text" required/>
             </div>
           </div>
           <div className="field">
             <label className="label">Image URL</label>
             <div className="control">
-              <input onChange={this.handleChange} value={this.state.image || ''} name="image" className="input" type="text" />
+              <input onChange={this.handleChange} value={this.state.image || ''} name="image" className="input" type="text" required/>
             </div>
           </div>
           <div className="field">
             <label className="label">Latitude</label>
             <div className="control">
-              <input onChange={this.handleChange} value={this.state.lat || ''} name="lat" className="input" type="number" />
+              <input onChange={this.handleChange} value={this.state.lat || ''} name="lat" className="input" type="number" required/>
             </div>
           </div>
           <div className="field">
             <label className="label">Longitude</label>
             <div className="control">
-              <input onChange={this.handleChange} value={this.state.lng || ''} name="lng" className="input" type="number" />
+              <input onChange={this.handleChange} value={this.state.lng || ''} name="lng" className="input" type="number" required/>
             </div>
           </div>
           <div className="field is-grouped">

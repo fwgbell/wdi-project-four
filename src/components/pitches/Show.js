@@ -60,7 +60,8 @@ class PitchShow extends React.Component {
             <div className="column is-12 reviewContainer">
               <h3>Reviews</h3>
               <hr />
-              {pitch.reviews?
+              {pitch.reviews.length > 0
+                ?
                 pitch.reviews.map(review =>
                   <div key={review._id} className="pitchReview columns is-multiline">
                     <h4 className="column is-8">{review.title}</h4>
@@ -74,7 +75,31 @@ class PitchShow extends React.Component {
                     }
                   </div>)
                 :
-                <p>No reviews yet</p>}
+                <p>No reviews yet</p>
+              }
+              {!pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub) &&
+                <form>
+                  <div className="field">
+                    <label className="label">Title</label>
+                    <div className="control">
+                      <input className="input" required/>
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Rating</label>
+                    <div className="control">
+                      <input type="range" min="1" max="5" />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Review</label>
+                    <div className="control">
+                      <textarea rows="4" required></textarea>
+                    </div>
+                  </div>
+                  <button className="button is-rounded is-info">Submit</button>
+                </form>
+              }
             </div>
           </section>
           :

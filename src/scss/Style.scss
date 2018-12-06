@@ -223,6 +223,16 @@ main{
         }
       }
     }
+    form{
+      border: 1px solid;
+      width: 100%;
+      padding: 1rem;
+      textarea{
+        resize: vertical;
+        width: 100%;
+        font-size: 20px;
+      }
+    }
   }
   .leaflet-container {
     width: 100%;
