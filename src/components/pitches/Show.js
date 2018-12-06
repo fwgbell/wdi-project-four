@@ -53,7 +53,19 @@ class PitchShow extends React.Component {
                 <MapBox userPosition={null} pitches={[pitch]} />
               </div>
             </section>
-            <div className="column is-12">Reviews go here</div>
+            <div className="column is-12 reviewContainer">
+              <h3>Reviews</h3>
+              <hr />
+              {pitch.reviews?
+                pitch.reviews.map(review =>
+                  <div key={review._id} className="pitchReview columns is-multiline">
+                    <h4 className="column is-8">{review.title}</h4>
+                    <h5 className="column is-4">{review.reviewedBy.username} - {review.rating}/5</h5>
+                    <p className="column is-12">{review.content}</p>
+                  </div>)
+                :
+                <p>No reviews yet</p>}
+            </div>
           </section>
           :
           <p>Loading...</p>
