@@ -13,6 +13,7 @@ import PitchIndex from './components/pitches/Index';
 import PitchShow from './components/pitches/Show';
 import PitchNew from './components/pitches/New';
 import PitchEdit from './components/pitches/Edit';
+import PitchMap from './components/pitches/PitchesMap';
 
 class App extends React.Component {
 
@@ -26,6 +27,7 @@ class App extends React.Component {
               <Route exact path='/' component={Home}/>
               <Route exact path='/pitches' component={PitchIndex} />
               <Route exact path='/pitches/new' component={PitchNew} />
+              <Route exact path='/pitches/map' component={PitchMap}/>
               <Route path='/pitches/:id/edit' component={PitchEdit}/>
               <Route path='/pitches/:id' component={PitchShow}/>
               <Route path="/login" component={AuthLogin} />

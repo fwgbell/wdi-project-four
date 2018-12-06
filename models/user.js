@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   profilePicture: String,
@@ -18,7 +17,7 @@ const userSchema = new mongoose.Schema({
       'Burnley', 'Cardiff City', 'Chelsea',
       'Crystal Palace', 'Everton', 'Fulham',
       'Huddersfield Town', 'Leicester City', 'Liverpool',
-      'Manchester City', 'Manchest United', 'Newcastle United',
+      'Manchester City', 'Manchester United', 'Newcastle United',
       'Southampton', 'Tottenham Hotspur', 'Watford',
       'West Ham United', 'Wolverhampton', 'None of the above'
     ]}

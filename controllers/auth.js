@@ -5,7 +5,7 @@ const { secret } = require('../config/environment');
 function register(req, res, next) {
   User.create(req.body)
     .then(user => {
-      const token = jwt.sign({ username: user.firstName, sub: user._id }, secret, { expiresIn: '6h' });
+      const token = jwt.sign({ username: user.username, sub: user._id }, secret, { expiresIn: '6h' });
       res.json({
         message: `Thanks for registering ${user.firstName}!`,
         token,
@@ -22,9 +22,9 @@ function login(req, res, next) {
       if(!user || !user.validatePassword(req.body.password)) {
         return res.status(401).json({ message: 'Login details not recognised' });
       }
-      const token = jwt.sign({ username: user.firstName, sub: user._id }, secret, { expiresIn: '6h' });
+      const token = jwt.sign({ username: user.username, sub: user._id }, secret, { expiresIn: '6h' });
       res.json({
-        message: `Welcome back ${user.firstName}!`,
+        message: `Welcome back ${user.username}!`,
         token,
         user
       });

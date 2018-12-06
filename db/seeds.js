@@ -14,8 +14,7 @@ const userIds = [
 
 const userData = [{
   _id: userIds[0],
-  firstName: 'Freddo',
-  lastName: 'Bell',
+  username: 'Freddie',
   email: 'f@f',
   password: 'pass',
   profilePicture: 'https://resources.stuff.co.nz/content/dam/images/1/s/w/u/9/h/image.related.StuffLandscapeSixteenByNine.710x400.1swu60.png/1543712142321.jpg',
@@ -23,6 +22,16 @@ const userData = [{
   role1: 'Winger',
   role2: 'Midfielder',
   club: 'Leicester City'
+}, {
+  _id: userIds[1],
+  username: 'Ronaldo-Wannabe',
+  email: 'r@r',
+  password: 'pass',
+  profilePicture: 'https://cdn.images.dailystar.co.uk/dynamic/58/photos/768000/620x/Ronaldo-670070.jpg',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore',
+  role1: 'Striker',
+  role2: 'Top Man',
+  club: 'Manchester United'
 }];
 
 mongoose.connect(dbURI, (err, db) => {
@@ -41,7 +50,7 @@ mongoose.connect(dbURI, (err, db) => {
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     }]
   }, {
-    uploadedBy: userIds[0],
+    uploadedBy: userIds[1],
     name: 'Battersea Church Road',
     lat: 51.477472,
     lng: -0.173529,
