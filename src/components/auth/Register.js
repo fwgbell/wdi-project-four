@@ -6,7 +6,9 @@ import { saveToken } from '../../lib/auth';
 class Register extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      roles: ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Defender', 'Goalkeeper', '💦Water Boy💦']
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -24,7 +26,18 @@ class Register extends React.Component {
     this.setState({ [name]: value });
   }
 
+
+
   render() {
+    const roles1 = ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Defender', 'Goalkeeper', '💦Water Boy💦'];
+    const roles2 = ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Defender', 'Goalkeeper', '💦Water Boy💦'];
+
+    const index1 = roles1.indexOf(this.state.role1);
+
+    if(index1 !== -1){
+      roles2.splice(index1, 1);
+    }
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="field">
@@ -63,15 +76,9 @@ class Register extends React.Component {
             <div className="select">
               <select name="role1" onChange={this.handleChange} value={this.state.role1 || ''} required>
                 <option>Please select</option>
-                <option value="Striker">Striker</option>
-                <option value="Top Man">Top Man</option>
-                <option value="Winger">Winger</option>
-                <option value="Midfielder">Midfielder</option>
-                <option value="Utility Player">Utility Player</option>
-                <option value="Last Man">Last Man</option>
-                <option value="Defender">Defender</option>
-                <option value="Goalkeeper">Goalkeeper</option>
-                <option value="💦Water Boy💦">💦Water Boy💦</option>
+                {
+                  roles1.map(role => <option key={role} value={role}>{role}</option>)
+                }
               </select>
             </div>
           </div>
@@ -82,34 +89,9 @@ class Register extends React.Component {
             <div className="select">
               <select name="role2" onChange={this.handleChange} value={this.state.role2 || ''} required>
                 <option>None</option>
-                <option value="Striker">Striker</option>
-                <option value="Top Man">Top Man</option>
-                <option value="Winger">Winger</option>
-                <option value="Midfielder">Midfielder</option>
-                <option value="Utility Player">Utility Player</option>
-                <option value="Last Man">Last Man</option>
-                <option value="Defender">Defender</option>
-                <option value="Goalkeeper">Goalkeeper</option>
-                <option value="💦Water Boy💦">💦Water Boy💦</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="field">
-          <label className="label">Third Preferred Role</label>
-          <div className="control">
-            <div className="select">
-              <select name="role3" onChange={this.handleChange} value={this.state.role3 || ''} required>
-                <option>None</option>
-                <option value="Striker">Striker</option>
-                <option value="Top Man">Top Man</option>
-                <option value="Winger">Winger</option>
-                <option value="Midfielder">Midfielder</option>
-                <option value="Utility Player">Utility Player</option>
-                <option value="Last Man">Last Man</option>
-                <option value="Defender">Defender</option>
-                <option value="Goalkeeper">Goalkeeper</option>
-                <option value="💦Water Boy💦">💦Water Boy💦</option>
+                {
+                  roles2.map(role => <option key={role} value={role}>{role}</option>)
+                }
               </select>
             </div>
           </div>

@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   bio: String,
   role1: { type: String, enum: ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Goalkeeper', 'Defender', '💦Water Boy💦' ], required: true},
   role2: { type: String, enum: ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Goalkeeper', 'Defender', '💦Water Boy💦' ]},
-  role3: { type: String, enum: ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Goalkeeper', 'Defender', '💦Water Boy💦' ]},
   club: {
     type: String,
     enum: [
