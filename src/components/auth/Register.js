@@ -7,7 +7,13 @@ class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      roles: ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Defender', 'Goalkeeper', '💦Water Boy💦']
+      clubs: ['AFC Bournemouth', 'Arsenal', 'Brighton & Hove Albion',
+        'Burnley', 'Cardiff City', 'Chelsea',
+        'Crystal Palace', 'Everton', 'Fulham',
+        'Huddersfield Town', 'Leicester City', 'Liverpool',
+        'Manchester City', 'Manchester United', 'Newcastle United',
+        'Southampton', 'Tottenham Hotspur', 'Watford',
+        'West Ham United', 'Wolverhampton', 'NONE OF THE ABOVE']
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -84,13 +90,26 @@ class Register extends React.Component {
           </div>
         </div>
         <div className="field">
-          <label className="label"> Second Preferred Role</label>
+          <label className="label">Secondary Role</label>
           <div className="control">
             <div className="select">
               <select name="role2" onChange={this.handleChange} value={this.state.role2 || ''} required>
                 <option>None</option>
                 {
                   roles2.map(role => <option key={role} value={role}>{role}</option>)
+                }
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">Premier League Club</label>
+          <div className="control">
+            <div className="select">
+              <select name="club" onChange={this.handleChange} value={this.state.club || ''} required>
+                <option>Please Select</option>
+                {
+                  this.state.clubs.map(club => <option key={club} value={club}>{club}</option>)
                 }
               </select>
             </div>

@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
       'Huddersfield Town', 'Leicester City', 'Liverpool',
       'Manchester City', 'Manchester United', 'Newcastle United',
       'Southampton', 'Tottenham Hotspur', 'Watford',
-      'West Ham United', 'Wolverhampton', 'None of the above'
+      'West Ham United', 'Wolverhampton', 'NONE OF THE ABOVE'
     ]}
 });
 
