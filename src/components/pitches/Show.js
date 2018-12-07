@@ -89,7 +89,7 @@ class PitchShow extends React.Component {
                     :
                     <p>Not Yet Rated</p>
                   }
-                  <p><Link to={`/profile/${pitch.uploadedBy._id}`}>Discovered By: {pitch.uploadedBy.username}</Link></p>
+                  <p>Discovered By: <Link to={`/profile/${pitch.uploadedBy._id}`}>{pitch.uploadedBy.username}</Link></p>
                 </div>
                 {pitch.uploadedBy._id === decodeToken().sub &&
                   <div className="column is-6 buttonWrapperShowPage">

@@ -166,6 +166,9 @@ main{
   section{
     .column{
       margin: 0;
+      p a{
+        color: black;
+      }
     }
     .buttonWrapperShowPage{
       button{
@@ -198,6 +201,9 @@ main{
         border-bottom: 1px solid;
       }
       h5{
+        a{
+          color: black;
+        }
         font-weight: bold;
         font-size: 18px;
         border-bottom: 1px solid;
