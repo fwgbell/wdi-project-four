@@ -14,10 +14,22 @@ class Profile extends React.Component {
   }
 
   render(){
+    const profile = this.state.profile;
     return (
       <div>
-        {this.state.profile && <p>{this.state.profile.username}</p>}
-        Profile Page!!!!
+        {profile
+          ?
+          <div>
+            <img src={profile.profilePicture}/>
+            <h1>{profile.username}</h1>
+            <h2>Preferred Role: {profile.role1}</h2>
+            <h2>Secondary Role: {profile.role2}</h2>
+            <h2>Club: {profile.club}</h2>
+            <p>Bio: {profile.bio}</p>
+          </div>
+          :
+          <p>Loading...</p>
+        }
       </div>
     );
   }

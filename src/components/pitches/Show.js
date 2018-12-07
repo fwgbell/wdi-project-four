@@ -89,7 +89,7 @@ class PitchShow extends React.Component {
                     :
                     <p>Not Yet Rated</p>
                   }
-                  <p>Discovered By: {pitch.uploadedBy.username}</p>
+                  <p><Link to={`/profile/${pitch.uploadedBy._id}`}>Discovered By: {pitch.uploadedBy.username}</Link></p>
                 </div>
                 {pitch.uploadedBy._id === decodeToken().sub &&
                   <div className="column is-6 buttonWrapperShowPage">
@@ -110,7 +110,7 @@ class PitchShow extends React.Component {
                 pitch.reviews.map(review =>
                   <div key={review._id} className="pitchReview columns is-multiline">
                     <h4 className="column is-8">{review.title}</h4>
-                    <h5 className="column is-4">{review.reviewedBy.username} - {review.rating}/5</h5>
+                    <h5 className="column is-4"><Link to={`/profile/${review.reviewedBy._id}`}>{review.reviewedBy.username}</Link> - {review.rating}/5</h5>
                     <p className="column is-12">{review.content}</p>
                     {review.reviewedBy._id === decodeToken().sub &&
                       <div>
