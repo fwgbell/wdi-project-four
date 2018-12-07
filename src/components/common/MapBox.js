@@ -2,6 +2,7 @@ import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Link } from 'react-router-dom';
 
+
 const MapBox = ({ userPosition, pitches }) => {
   return (
     <div id='map'>
