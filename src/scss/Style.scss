@@ -183,8 +183,15 @@ main{
       margin-top: 0;
       margin-bottom: 1vh;
     }
+    .noReview{
+      font-size: 40px;
+      width: 100%;
+      text-align: center;
+      margin: 50px 0;
+    }
     .pitchReview{
       border: 1px solid;
+      margin-bottom: 30px;
       h4{
         font-weight: bold;
         font-size: 20px;
@@ -227,6 +234,7 @@ main{
       border: 1px solid;
       width: 100%;
       padding: 1rem;
+      margin-bottom: 30px;
       textarea{
         resize: vertical;
         width: 100%;

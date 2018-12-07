@@ -9,11 +9,13 @@ class PitchShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 3
+      rating: 3,
+      editing: false
     };
     this.deletePitch = this.deletePitch.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.editMode = this.editMode.bind(this);
   }
 
   componentDidMount() {
@@ -40,6 +42,11 @@ class PitchShow extends React.Component {
 
   handleChange({ target: { name, value }}){
     this.setState({ [name]: value });
+  }
+
+  editMode(){
+    const usersReveiw = this.state.pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub);
+    this.setState({ editing: true, title: usersReveiw.title, content: usersReveiw.content, rating: usersReveiw.rating });
   }
 
   deleteReview = review =>{
@@ -90,15 +97,15 @@ class PitchShow extends React.Component {
                     <p className="column is-12">{review.content}</p>
                     {review.reviewedBy._id === decodeToken().sub &&
                       <div>
-                        <button className="button is-rounded">Edit</button>
+                        <button onClick={this.editMode} className="button is-rounded">Edit</button>
                         <button onClick={() => this.deleteReview(review)} className="button is-rounded is-danger">Delete</button>
                       </div>
                     }
                   </div>)
                 :
-                <p>No reviews yet</p>
+                <p className="noReview">No reviews yet</p>
               }
-              {!pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub) &&
+              {!pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub) || this.state.editing &&
                 <form onSubmit={this.handleSubmit}>
                   <div className="field">
                     <label className="label">Title</label>
@@ -118,7 +125,15 @@ class PitchShow extends React.Component {
                       <textarea rows="4" onChange={this.handleChange} value={this.state.content || ''} name="content" required></textarea>
                     </div>
                   </div>
-                  <button className="button is-rounded is-info">Submit</button>
+                  { !this.state.editing
+                    ?
+                    <button className="button is-rounded is-info">Submit</button>
+                    :
+                    <div>
+                      <button className="button is-rounded is-info">Update</button>
+                      <button className="button is-rounded is-primary">Cancel</button>
+                    </div>
+                  }
                 </form>
               }
             </div>
