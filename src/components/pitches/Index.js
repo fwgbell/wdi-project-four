@@ -28,7 +28,12 @@ class PitchIndex extends React.Component {
 
   componentDidMount() {
     axios.get('/api/pitches')
-      .then(res => this.setState({ pitches: res.data }));
+      .then(res => {
+        res.data.sort(function(a, b){
+          return b.averageRating - a.averageRating;
+        });
+        this.setState({ pitches: res.data });
+      });
   }
 
   render() {
