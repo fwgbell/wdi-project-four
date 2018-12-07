@@ -16,6 +16,8 @@ class PitchShow extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.editMode = this.editMode.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -46,11 +48,26 @@ class PitchShow extends React.Component {
 
   editMode(){
     const usersReveiw = this.state.pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub);
-    this.setState({ editing: true, title: usersReveiw.title, content: usersReveiw.content, rating: usersReveiw.rating });
+    this.setState({ editing: true, reviewId: usersReveiw._id, title: usersReveiw.title, content: usersReveiw.content, rating: usersReveiw.rating });
+  }
+
+  cancelEdit(){
+    this.setState({ editing: false, title: null, content: null, rating: 3});
+  }
+
+  handleUpdate(event){
+    event.preventDefault();
+    const sendObject = {
+      title: this.state.title,
+      content: this.state.content,
+      rating: this.state.rating,
+      reviewedBy: decodeToken().sub
+    };
+    axios.put(`/api/pitches/${this.state.pitch._id}/reviews/${this.state.reviewId}`, sendObject, authorizationHeader())
+      .then(result => this.setState({ pitch: result.data, editing: false, title: null, content: null, rating: 3 }));
   }
 
   deleteReview = review =>{
-    console.log(this.state);
     axios.delete(`/api/pitches/${this.state.pitch._id}/reviews/${review._id}`, authorizationHeader())
       .then(result => this.setState({ pitch: result.data }));
   }
@@ -105,8 +122,8 @@ class PitchShow extends React.Component {
                 :
                 <p className="noReview">No reviews yet</p>
               }
-              {!pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub) || this.state.editing &&
-                <form onSubmit={this.handleSubmit}>
+              {(!pitch.reviews.find(review => review.reviewedBy._id === decodeToken().sub) || this.state.editing) &&
+                <form>
                   <div className="field">
                     <label className="label">Title</label>
                     <div className="control">
@@ -127,11 +144,11 @@ class PitchShow extends React.Component {
                   </div>
                   { !this.state.editing
                     ?
-                    <button className="button is-rounded is-info">Submit</button>
+                    <button onClick={this.handleSubmit} className="button is-rounded is-info">Submit</button>
                     :
                     <div>
-                      <button className="button is-rounded is-info">Update</button>
-                      <button className="button is-rounded is-primary">Cancel</button>
+                      <button onClick={this.handleUpdate} className="button is-rounded is-info">Update</button>
+                      <button onClick={this.cancelEdit} className="button is-rounded is-primary">Cancel</button>
                     </div>
                   }
                 </form>
