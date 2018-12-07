@@ -18,20 +18,20 @@ const userData = [{
   email: 'f@f',
   password: 'pass',
   profilePicture: 'https://resources.stuff.co.nz/content/dam/images/1/s/w/u/9/h/image.related.StuffLandscapeSixteenByNine.710x400.1swu60.png/1543712142321.jpg',
-  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
   role1: 'Winger',
   role2: 'Midfielder',
   club: 'Leicester City'
 }, {
   _id: userIds[1],
-  username: 'Ronaldo-Wannabe',
-  email: 'r@r',
+  username: 'Big-Joe',
+  email: 'j@j',
   password: 'pass',
-  profilePicture: 'https://cdn.images.dailystar.co.uk/dynamic/58/photos/768000/620x/Ronaldo-670070.jpg',
-  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore',
+  profilePicture: 'https://media.licdn.com/dms/image/C4D03AQHZijT3gSYPTQ/profile-displayphoto-shrink_800_800/0?e=1549497600&v=beta&t=nlF_uPB2MeC5rIGQTubhEtcERmB4j9zdOm_fFM8UREE',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
   role1: 'Striker',
   role2: 'Top Man',
-  club: 'Manchester United'
+  club: 'Arsenal'
 }];
 
 mongoose.connect(dbURI, (err, db) => {

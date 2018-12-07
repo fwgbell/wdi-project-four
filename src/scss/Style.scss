@@ -282,7 +282,7 @@ main{
 
 .profilePage{
   div{
-    .card{
+    .fifaCard{
       height: 500px;
       width: 300px;
       display: flex;
@@ -292,32 +292,32 @@ main{
         width: 0;
         height: 0;
         border-left: 30px solid transparent;
-        border-bottom: 50px solid gold;
+        border-bottom: 50px solid rgb(209, 149, 15);
         border-top: 0 solid transparent;
         border-right: 0 solid transparent;
       }
       .cardHead{
         width: 80%;
         height: 10%;
-        background-color: gold;
+        background-color: rgb(209, 149, 15);
       }
       .cardTopRight{
         width: 0;
         height: 0;
         border-top: 50px solid transparent;
-        border-left: 30px solid gold;
+        border-left: 30px solid rgb(209, 149, 15);
         border-bottom: 0 solid transparent;
         border-right: 0 solid transparent;
       }
       .cardBody{
         width: 100%;
         height: 70%;
-        background-color: gold;
+        background-image: linear-gradient(rgb(209, 149, 15), rgb(227, 177, 29));
       }
       .cardBase{
         height: 0;
         width: 0;
-        border-top: 100px solid gold;
+        border-top: 100px solid rgb(227, 177, 29);
         border-right: 150px solid transparent;
         border-left: 150px solid transparent;
       }
