@@ -6,8 +6,11 @@ import { getDistanceFromLatLngInKm } from '../../lib/map';
 class PitchIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      titleText: 'Highest Scoring Pitches'
+    };
     this.sortByDistance = this.sortByDistance.bind(this);
+    this.sortByScore = this.sortByScore.bind(this);
   }
 
   sortByDistance(){
@@ -20,11 +23,16 @@ class PitchIndex extends React.Component {
       pitches.sort(function(a, b){
         return a.distance - b.distance;
       });
-      this.setState({ pitches: pitches});
-    }, ()=> console.log('failed to find user loction :('));
+      this.setState({ titleText: 'Closest Pitches To You', pitches: pitches});
+    }, this.setState({ titleText: 'Looking For Your Location...'}));
   }
 
-
+  sortByScore(){
+    const pitches = this.state.pitches.sort(function(a, b){
+      return b.averageRating - a.averageRating;
+    });
+    this.setState({ titleText: 'Highest Scoring Pitches', pitches: pitches});
+  }
 
   componentDidMount() {
     axios.get('/api/pitches')
@@ -39,8 +47,12 @@ class PitchIndex extends React.Component {
   render() {
     return (
       <section className="indexPage columns is-multiline">
-        <button onClick={this.sortByDistance} className="column is-12">sort</button>
-        <h1 className="title column is-12">Doing It For The Pitches</h1>
+        <div className="column is-12">
+          <p>Sort by:</p>
+          <button onClick={this.sortByDistance} className="button">Distance</button>
+          <button onClick={this.sortByScore} className="button">Score</button>
+        </div>
+        <h1 className="title column is-12">{this.state.titleText}</h1>
         {this.state.pitches
           ?
           this.state.pitches.map(pitch => <PitchWrapper key={pitch._id} pitch={pitch}/>)
