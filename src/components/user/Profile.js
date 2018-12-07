@@ -16,7 +16,7 @@ class Profile extends React.Component {
   render(){
     const profile = this.state.profile;
     return (
-      <div>
+      <div className="profilePage">
         {profile
           ?
           <div>
@@ -26,6 +26,13 @@ class Profile extends React.Component {
             <h2>Secondary Role: {profile.role2}</h2>
             <h2>Club: {profile.club}</h2>
             <p>Bio: {profile.bio}</p>
+            <div className="card">
+              <div className="cardTopLeft"></div>
+              <div className="cardHead"></div>
+              <div className="cardTopRight"></div>
+              <div className="cardBody"></div>
+              <div className="cardBase"></div>
+            </div>
           </div>
           :
           <p>Loading...</p>
