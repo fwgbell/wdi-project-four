@@ -14,6 +14,7 @@ import PitchShow from './components/pitches/Show';
 import PitchNew from './components/pitches/New';
 import PitchEdit from './components/pitches/Edit';
 import PitchMap from './components/pitches/PitchesMap';
+import Profile from './components/user/Profile';
 
 class App extends React.Component {
 
@@ -30,8 +31,9 @@ class App extends React.Component {
               <Route exact path='/pitches/map' component={PitchMap}/>
               <Route path='/pitches/:id/edit' component={PitchEdit}/>
               <Route path='/pitches/:id' component={PitchShow}/>
-              <Route path="/login" component={AuthLogin} />
-              <Route path="/register" component={AuthRegister} />
+              <Route path="/profile/:id" component={Profile} />
+              <Route exact path="/login" component={AuthLogin} />
+              <Route exact path="/register" component={AuthRegister} />
             </Switch>
           </main>
         </div>
