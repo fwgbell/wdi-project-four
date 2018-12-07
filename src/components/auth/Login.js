@@ -26,11 +26,19 @@ class Login extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>Email</label>
-        <input name="email" onChange={this.handleChange} value={this.state.email || ''}/>
-        <label>Password</label>
-        <input name="password" onChange={this.handleChange} value={this.state.password || ''}/>
-        <button>Log in</button>
+        <div className="field">
+          <label className="label">Email</label>
+          <div className="contol">
+            <input className="input" type="email" name="email" onChange={this.handleChange} value={this.state.email || ''} required/>
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">Password</label>
+          <div className="contol">
+            <input className="input" type="password" name="password" onChange={this.handleChange} value={this.state.password || ''} required/>
+          </div>
+        </div>
+        <button className="button is-rounded">Log in</button>
       </form>
     );
   }

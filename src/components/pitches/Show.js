@@ -103,7 +103,7 @@ class PitchShow extends React.Component {
               </div>
             </section>
             <div className="column is-12 reviewContainer">
-              <h3>Reviews</h3>
+              <h3>Pitch Reviews</h3>
               <hr />
               {pitch.reviews.length > 0
                 ?
@@ -131,7 +131,7 @@ class PitchShow extends React.Component {
                     </div>
                   </div>
                   <div className="field">
-                    <label className="label">Rating</label>
+                    <label className="label">Score</label>
                     <div className="control">
                       <input type="range" min="1" max="5" onChange={this.handleChange} value={this.state.rating || ''} name="rating" />
                     </div>
