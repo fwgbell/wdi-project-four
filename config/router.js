@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const pitches = require('../controllers/pitches');
 const auth = require('../controllers/auth');
+const profile = require('../controllers/profile');
 const pitchReviews = require('../controllers/pitchReviews');
 const secureRoute = require('../lib/secureRoute');
+
 
 router.route('/pitches')
   .get(pitches.index)
@@ -22,5 +24,10 @@ router.route('/pitches/:id/reviews/:reviewId')
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);
+
+router.route('/profile/:id')
+  .get(secureRoute, profile.show)
+  .put(secureRoute, profile.update);
+
 
 module.exports = router;
