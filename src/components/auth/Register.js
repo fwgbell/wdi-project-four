@@ -135,7 +135,7 @@ class Register extends React.Component {
           </div>
         </div>
         {this.state.countries && <div className="field">
-          <label className="label">Country</label>
+          <label className="label">National Team</label>
           <div className="control">
             <div className="select">
               <select name="country" onChange={this.handleChange} value={this.state.country || ''} required>

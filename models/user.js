@@ -27,11 +27,25 @@ userSchema.methods.validatePassword = function validatePassword(password){
   return bcrypt.compareSync(password, this.password);
 };
 
+userSchema.virtual('clubLogo')
+  .get(function(){
+    let clubLogo = '';
+    switch(this.club){
+      case 'Arsenal':
+        clubLogo = 'http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c4df.png';
+        break;
+    }
+    return clubLogo;
+  });
+
 userSchema.pre('save', function hashPassword(next){
   if(this.isModified('password')){
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
   }
   next();
 });
+
+userSchema.set('toJSON', { virtuals: true });
+
 
 module.exports = mongoose.model('User', userSchema);

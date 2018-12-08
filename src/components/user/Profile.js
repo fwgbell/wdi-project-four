@@ -5,9 +5,7 @@ import { authorizationHeader } from '../../lib/auth';
 class Profile extends React.Component {
   constructor(props){
     super(props);
-    this.state={
-      Arsenal: 'http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c4df.png'
-    };
+    this.state={};
   }
 
   getCountry(){
@@ -41,7 +39,7 @@ class Profile extends React.Component {
               </div>
               <div className="cardTopRight"></div>
               <div className="cardBody">
-                <img className="profileEmblem" src={this.state[profile.club]}/>
+                <img className="profileEmblem" src={profile.clubLogo}/>
                 {this.state.countryImage && <img className="profileEmblem" src={this.state.countryImage}/>}
                 <img className="profilePicture" src={profile.profilePicture}/>
                 <h2>Preferred Role: {profile.role1}</h2>
