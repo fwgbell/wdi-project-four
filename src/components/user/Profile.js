@@ -5,12 +5,26 @@ import { authorizationHeader } from '../../lib/auth';
 class Profile extends React.Component {
   constructor(props){
     super(props);
-    this.state={};
+    this.state={
+      Arsenal: 'http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c4df.png'
+    };
+  }
+
+  getCountry(){
+    if(this.state.profile.country === 'England'){
+      this.setState({ countryImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1280px-Flag_of_England.svg.png'});
+    }else{
+      axios.get(`https://restcountries.eu/rest/v2/name/${this.state.profile.country}`)
+        .then(result => {
+          const countryImage = result.data[0].flag;
+          this.setState({ countryImage: countryImage });
+        });
+    }
   }
 
   componentDidMount() {
     axios.get(`/api/profile/${this.props.match.params.id}`, authorizationHeader())
-      .then(result => this.setState({ profile: result.data }));
+      .then(result => this.setState({ profile: result.data }, this.getCountry));
   }
 
   render(){
@@ -22,14 +36,16 @@ class Profile extends React.Component {
           <div>
             <div className="fifaCard">
               <div className="cardTopLeft"></div>
-              <div className="cardHead"></div>
+              <div className="cardHead">
+                <h1>{profile.username}</h1>
+              </div>
               <div className="cardTopRight"></div>
               <div className="cardBody">
-                <img src={profile.profilePicture}/>
-                <h1>{profile.username}</h1>
+                <img className="profileEmblem" src={this.state[profile.club]}/>
+                {this.state.countryImage && <img className="profileEmblem" src={this.state.countryImage}/>}
+                <img className="profilePicture" src={profile.profilePicture}/>
                 <h2>Preferred Role: {profile.role1}</h2>
                 <h2>Secondary Role: {profile.role2}</h2>
-                <h2>Club: {profile.club}</h2>
                 <p>Bio: {profile.bio}</p>
               </div>
               <div className="cardBase"></div>

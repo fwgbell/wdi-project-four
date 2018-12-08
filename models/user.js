@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   role1: { type: String, enum: ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Goalkeeper', 'Defender', '💦Water Boy💦' ], required: true},
   role2: { type: String, enum: ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Goalkeeper', 'Defender', '💦Water Boy💦' ]},
   club: {
-    type: String,
+    type: String, required: true,
     enum: [
       'AFC Bournemouth', 'Arsenal', 'Brighton & Hove Albion',
       'Burnley', 'Cardiff City', 'Chelsea',
@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
       'Manchester City', 'Manchester United', 'Newcastle United',
       'Southampton', 'Tottenham Hotspur', 'Watford',
       'West Ham United', 'Wolverhampton', 'NONE OF THE ABOVE'
-    ]}
+    ]},
+  country: String
 });
 
 userSchema.methods.validatePassword = function validatePassword(password){

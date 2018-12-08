@@ -21,7 +21,18 @@ class Register extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('/api/register', this.state)
+    const sendObject = {
+      email: this.state.email,
+      password: this.state.password,
+      username: this.state.username,
+      bio: this.state.bio,
+      profilePicture: this.state.profilePicture,
+      role1: this.state.role1,
+      role2: this.state.role2,
+      club: this.state.club,
+      country: this.state.country
+    };
+    axios.post('/api/register', sendObject)
       .then(result => {
         saveToken(result.data.token);
         this.props.history.push('/pitches');
@@ -32,7 +43,15 @@ class Register extends React.Component {
     this.setState({ [name]: value });
   }
 
-
+  componentDidMount(){
+    axios.get('https://restcountries.eu/rest/v2/all')
+      .then(result => {
+        const countries = result.data;
+        const england = { name: 'England'};
+        countries.unshift(england);
+        this.setState({ countries: countries });
+      });
+  }
 
   render() {
     const roles1 = ['Striker', 'Top Man', 'Winger', 'Midfielder', 'Utility Player', 'Last Man', 'Defender', 'Goalkeeper', '💦Water Boy💦'];
@@ -115,6 +134,19 @@ class Register extends React.Component {
             </div>
           </div>
         </div>
+        {this.state.countries && <div className="field">
+          <label className="label">Country</label>
+          <div className="control">
+            <div className="select">
+              <select name="country" onChange={this.handleChange} value={this.state.country || ''} required>
+                <option>Please Select</option>
+                {
+                  this.state.countries.map(country => <option key={country.name} value={country.name}>{country.name}</option>)
+                }
+              </select>
+            </div>
+          </div>
+        </div> }
         <button className="button is-rounded">Register</button>
       </form>
     );

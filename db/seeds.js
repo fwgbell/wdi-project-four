@@ -21,7 +21,8 @@ const userData = [{
   bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
   role1: 'Winger',
   role2: 'Midfielder',
-  club: 'Leicester City'
+  club: 'Leicester City',
+  country: 'England'
 }, {
   _id: userIds[1],
   username: 'Big-Joe',
@@ -31,7 +32,8 @@ const userData = [{
   bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
   role1: 'Striker',
   role2: 'Top Man',
-  club: 'Arsenal'
+  club: 'Arsenal',
+  country: 'England'
 }];
 
 mongoose.connect(dbURI, (err, db) => {
