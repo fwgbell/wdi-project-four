@@ -39,7 +39,7 @@ class Profile extends React.Component {
               </div>
               <div className="cardTopRight"></div>
               <div className="cardBody">
-                <img className="profileEmblem" src={profile.clubLogo}/>
+                <img className="profileEmblem" src=""/>
                 {this.state.countryImage && <img className="profileEmblem" src={this.state.countryImage}/>}
                 <img className="profilePicture" src={profile.profilePicture}/>
                 <h2>Preferred Role: {profile.role1}</h2>
