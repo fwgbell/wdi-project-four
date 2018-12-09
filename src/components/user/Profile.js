@@ -49,7 +49,8 @@ class Profile extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="column">
+            <div className="column history">
+              Match history here
             </div>
           </div>
           :
