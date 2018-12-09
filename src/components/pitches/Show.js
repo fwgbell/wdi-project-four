@@ -74,6 +74,7 @@ class PitchShow extends React.Component {
 
   render() {
     const pitch = this.state.pitch;
+    console.log(pitch);
     return (
       <main>
         {pitch

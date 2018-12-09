@@ -1,5 +1,13 @@
 const Match = require('../models/match');
 
+function showRoute(req, res, next){
+  Match
+    .findById(req.params.id)
+    .populate('hostedBy pitch')
+    .then(match => res.json(match))
+    .catch(next);
+}
+
 function createRoute(req, res, next){
   req.body.hostedBy = req.currentUser._id;
   Match
@@ -17,6 +25,7 @@ function deleteRoute(req, res, next){
 }
 
 module.exports = {
+  show: showRoute,
   create: createRoute,
   delete: deleteRoute
 };

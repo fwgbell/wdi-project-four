@@ -10,7 +10,7 @@ function indexRoute(req, res, next) {
 function showRoute(req, res, next) {
   Pitch
     .findById(req.params.id)
-    .populate('uploadedBy reviews.reviewedBy')
+    .populate('uploadedBy reviews.reviewedBy matches')
     .then(pitch => res.json(pitch))
     .catch(next);
 }

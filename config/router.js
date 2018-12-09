@@ -32,7 +32,9 @@ router.route('/profile/:id')
 
 router.post('/match', secureRoute, match.create);
 
-router.delete('/match/:id', secureRoute, match.delete);
+router.route('/match/:id')
+  .get(secureRoute, match.show)
+  .delete(secureRoute, match.delete);
 
 
 module.exports = router;
