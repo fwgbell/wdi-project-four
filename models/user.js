@@ -105,6 +105,20 @@ userSchema.pre('save', function hashPassword(next){
   next();
 });
 
+userSchema.virtual('matches', {
+  ref: 'Match',
+  localField: '_id',
+  foreignField: 'attending'
+});
+
+userSchema.virtual('hosting', {
+  ref: 'Match',
+  localField: '_id',
+  foreignField: 'hostedBy'
+});
+
+
+
 userSchema.set('toJSON', { virtuals: true });
 
 

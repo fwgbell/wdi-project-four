@@ -15,6 +15,13 @@ const pitchSchema = new mongoose.Schema({
   }]
 });
 
+pitchSchema.virtual('matches', {
+  ref: 'Match',
+  localField: '_id',
+  foreignField: 'pitch'
+});
+
+
 pitchSchema.virtual('averageRating')
   .get(function() {
     return Math.round(this.reviews.reduce((sum, review) => {
