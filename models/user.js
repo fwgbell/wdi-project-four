@@ -41,58 +41,58 @@ userSchema.virtual('clubLogo')
         clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/400px-Brighton__Hove_Albion_logo.svg_.png';
         break;
       case 'Burnley':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/burnley_fc_logo.png';
         break;
       case 'Cardiff City':
-        clubLogo = '';
+        clubLogo = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Cardiff_City_crest.svg/1200px-Cardiff_City_crest.svg.png';
         break;
       case 'Chelsea':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/chelsea_fc_logo.png';
         break;
       case 'Crystal Palace':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/crystal_palace_fc_logo.jpg';
         break;
       case 'Everton':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/everton.png';
         break;
       case 'Fulham':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2018/08/fulham_fc_colors-768x1024.png';
         break;
       case 'Huddersfield Town':
-        clubLogo = '';
+        clubLogo = 'https://vignette.wikia.nocookie.net/logopedia/images/b/b5/Huddersfield_Town_FC_logo_%28simple%29.png/revision/latest?cb=20120314135832';
         break;
       case 'Leicester City':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/leicester_city_fc_colors.png';
         break;
       case 'Liverpool':
-        clubLogo = '';
+        clubLogo = 'https://upload.wikimedia.org/wikipedia/hif/b/bd/Liverpool_FC.png';
         break;
       case 'Manchester City':
-        clubLogo = '';
+        clubLogo = 'https://upload.wikimedia.org/wikipedia/sco/thumb/e/eb/Manchester_City_FC_badge.svg/410px-Manchester_City_FC_badge.svg.png';
         break;
       case 'Manchester United':
-        clubLogo = '';
+        clubLogo = 'http://pngimg.com/uploads/manchester_united/manchester_united_PNG20.png';
         break;
       case 'Newcastle United':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/newcastle_united_fc_crest-768x773.png';
         break;
       case 'Southampton':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/southhampton_fc.png';
         break;
       case 'Tottenham Hotspur':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/tottenham_hotspur_logo.png';
         break;
       case 'Watford':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2017/11/watford.png';
         break;
       case 'West Ham United':
-        clubLogo = '';
+        clubLogo = 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/185px-West_Ham_United_FC_logo.svg.png';
         break;
       case 'Wolverhampton':
-        clubLogo = '';
+        clubLogo = 'https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2018/08/wolves-logo.png';
         break;
       case 'NONE OF THE ABOVE':
-        clubLogo = '';
+        clubLogo = 'http://pngimg.com/uploads/football/football_PNG52789.png';
         break;
     }
     return clubLogo;
