@@ -39,12 +39,14 @@ class Profile extends React.Component {
               </div>
               <div className="cardTopRight"></div>
               <div className="cardBody">
-                <img className="profileEmblem" src={profile.clubLogo}/>
-                {this.state.countryImage && <img className="profileEmblem" src={this.state.countryImage}/>}
+                <div className="profileEmblems">
+                  <img className="profileLogo" src={profile.clubLogo}/>
+                  {this.state.countryImage && <img className="profileFlag" src={this.state.countryImage}/>}
+                </div>
                 <img className="profilePicture" src={profile.profilePicture}/>
                 <h2>Preferred Role: {profile.role1}</h2>
-                <h2>Secondary Role: {profile.role2}</h2>
-                <p>Bio: {profile.bio}</p>
+                <h3>Secondary Role: {profile.role2}</h3>
+                <p><strong>Bio:</strong> {profile.bio}</p>
               </div>
               <div className="cardBase"></div>
             </div>
