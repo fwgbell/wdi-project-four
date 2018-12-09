@@ -3,6 +3,7 @@ const pitches = require('../controllers/pitches');
 const auth = require('../controllers/auth');
 const profile = require('../controllers/profile');
 const pitchReviews = require('../controllers/pitchReviews');
+const match = require('../controllers/match');
 const secureRoute = require('../lib/secureRoute');
 
 
@@ -28,6 +29,10 @@ router.post('/login', auth.login);
 router.route('/profile/:id')
   .get(secureRoute, profile.show)
   .put(secureRoute, profile.update);
+
+router.post('/match', secureRoute, match.create);
+
+router.delete('/match/:id', secureRoute, match.delete);
 
 
 module.exports = router;

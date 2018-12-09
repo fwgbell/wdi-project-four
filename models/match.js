@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const pitchSchema = new mongoose.Schema({
+const matchSchema = new mongoose.Schema({
   hostedBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   time: Date,
   endTime: Date,
@@ -10,4 +10,4 @@ const pitchSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Pitch', pitchSchema);
+module.exports = mongoose.model('Match', matchSchema);
