@@ -17,7 +17,7 @@ const userData = [{
   username: 'Freddie',
   email: 'f@f',
   password: 'pass',
-  profilePicture: 'https://resources.stuff.co.nz/content/dam/images/1/s/w/u/9/h/image.related.StuffLandscapeSixteenByNine.710x400.1swu60.png/1543712142321.jpg',
+  profilePicture: 'http://media-ima002.globaltalentsystems.com/23671/600/23671_000-11-30-2016-12520.jpg',
   bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
   role1: 'Winger',
   role2: 'Midfielder',

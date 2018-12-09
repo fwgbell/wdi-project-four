@@ -285,21 +285,17 @@ main{
     .fifaCard{
       height: 500px;
       width: 300px;
+      margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
-      .cardTopLeft{
-        width: 0;
-        height: 0;
-        border-left: 30px solid transparent;
-        border-bottom: 50px solid rgb(190, 130, 8);
-        border-top: 0 solid transparent;
-        border-right: 0 solid transparent;
-      }
+      background-image: url(http://utfifacoins.com/images/blog/cards/totw.png);
+      background-position: center;
+      background-size: cover;
       .cardHead{
-        width: 80%;
+        margin-top: 2rem;
+        width: 100%;
         height: 10%;
-        background-color: rgb(190, 130, 8);
         h1{
           color: white;
           width: 100%;
@@ -308,20 +304,13 @@ main{
           font-weight: bold;
         }
       }
-      .cardTopRight{
-        width: 0;
-        height: 0;
-        border-top: 50px solid transparent;
-        border-left: 30px solid rgb(190, 130, 8);
-        border-bottom: 0 solid transparent;
-        border-right: 0 solid transparent;
-      }
       .cardBody{
+        margin-top: -20%;
         width: 100%;
         height: 70%;
-        background-image: linear-gradient(rgb(190, 130, 8), rgb(222, 170, 25));
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
         color: white;
         text-align: center;
         .profileEmblems{
@@ -329,7 +318,8 @@ main{
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
-          padding: 0 2rem 0 1rem;
+          padding: 0 2rem 0 2rem;
+          height: 10rem;
           .profileLogo{
             width: 5rem;
             height: 5rem;
@@ -341,13 +331,15 @@ main{
           }
         }
         .profilePicture{
-          width: 9rem;
-          height: 9rem;
+          margin-top: 32px;
+          margin-left: 25px;
+          width: 7rem;
+          height: 7rem;
           border-radius: 100%;
           border: 1px solid black;
         }
         h2{
-          background-color: rgb(190, 130, 8);
+          margin-top: 20px;
           width: 100%;
           font-size: 20px;
           font-weight: bold;
@@ -355,7 +347,6 @@ main{
           line-height: 40px;
         }
         h3{
-          background-color: rgb(222, 170, 25);
           width: 100%;
           font-size: 20px;
           font-weight: bold;
@@ -363,7 +354,6 @@ main{
           line-height: 40px;
         }
         p{
-          background-image: linear-gradient(rgb(190, 130, 8), rgb(222, 170, 25));
           width: 100%;
           font-size: 16px;
           strong{
@@ -371,13 +361,6 @@ main{
             font-size: 20px;
           }
         }
-      }
-      .cardBase{
-        height: 0;
-        width: 0;
-        border-top: 100px solid rgb(222, 170, 25);
-        border-right: 150px solid transparent;
-        border-left: 150px solid transparent;
       }
     }
   }

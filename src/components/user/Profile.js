@@ -31,24 +31,25 @@ class Profile extends React.Component {
       <div className="profilePage">
         {profile
           ?
-          <div>
-            <div className="fifaCard">
-              <div className="cardTopLeft"></div>
-              <div className="cardHead">
-                <h1>{profile.username}</h1>
-              </div>
-              <div className="cardTopRight"></div>
-              <div className="cardBody">
-                <div className="profileEmblems">
-                  <img className="profileLogo" src={profile.clubLogo}/>
-                  {this.state.countryImage && <img className="profileFlag" src={this.state.countryImage}/>}
+          <div className="columns">
+            <div className="column">
+              <div className="fifaCard">
+                <div className="cardHead">
+                  <h1>{profile.username}</h1>
                 </div>
-                <img className="profilePicture" src={profile.profilePicture}/>
-                <h2>Preferred Role: {profile.role1}</h2>
-                <h3>Secondary Role: {profile.role2}</h3>
-                <p><strong>Bio:</strong> {profile.bio}</p>
+                <div className="cardBody">
+                  <div className="profileEmblems">
+                    <img className="profileLogo" src={profile.clubLogo}/>
+                    {this.state.countryImage && <img className="profileFlag" src={this.state.countryImage}/>}
+                  </div>
+                  <img className="profilePicture" src={profile.profilePicture}/>
+                  <h2>Preferred Role: {profile.role1}</h2>
+                  <h3>Secondary Role: {profile.role2}</h3>
+                  <p><strong>Bio:</strong> {profile.bio}</p>
+                </div>
               </div>
-              <div className="cardBase"></div>
+            </div>
+            <div className="column">
             </div>
           </div>
           :
