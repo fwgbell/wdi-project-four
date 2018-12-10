@@ -47,13 +47,14 @@ class MatchShow extends React.Component{
           <div>
             <h1>{match.type}</h1>
             <h1>Host: <Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></h1>
+            <h2>Pitch: {match.pitch.name}</h2>
             <p>Match Day: {moment(match.time).format('dddd Do')}</p>
             <p>Kick-Off: {moment(match.time).format('h:m a')}</p>
             <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
             {match.hostedBy._id === decodeToken().sub ?
               <div>
                 <button onClick={this.cancelMatch}>Call Off Match</button>
-                <button onClick={this.editMatch}>Edit Match</button>
+                <Link to={`/matches/${this.props.match.params.id}/edit`}><button>Edit Match</button></Link>
               </div>
               :
               <div>
