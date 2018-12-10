@@ -30,10 +30,11 @@ router.route('/profile/:id')
   .get(secureRoute, profile.show)
   .put(secureRoute, profile.update);
 
-router.post('/match', secureRoute, match.create);
+router.post('/matches', secureRoute, match.create);
 
-router.route('/match/:id')
+router.route('/matches/:id')
   .get(secureRoute, match.show)
+  .put(secureRoute, match.update)
   .delete(secureRoute, match.delete);
 
 

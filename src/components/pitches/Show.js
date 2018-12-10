@@ -118,20 +118,22 @@ class PitchShow extends React.Component {
                   ?
                   upcoming.map(match =>
                     <div key={match._id} className="pitchMatch column is-3">
-                      <h3>{match.type}</h3>
-                      <h5><strong>Match Day:</strong> {moment(match.time).format('dddd Do')}</h5>
-                      { Date.parse(match.time) < new Date() ?
-                        <h5><strong>Kicked Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
-                        :
-                        <h5><strong>Kick-Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
-                      }
-                      <h5><strong>Final Whistle:</strong> {moment(match.endTime).format('h:m a')}</h5>
-                      <h5><strong>Duration:</strong> {moment(match.endTime).diff(moment(match.time), 'minutes')} minutes</h5>
-                      { match.attending.length + 1 > 1?
-                        <h5>{match.attending.length + 1} players attending</h5>
-                        :
-                        <h5><strong>1 player attending</strong></h5>
-                      }
+                      <Link to={`/matches/${match._id}`}>
+                        <h3>{match.type}</h3>
+                        <h5><strong>Match Day:</strong> {moment(match.time).format('dddd Do')}</h5>
+                        { Date.parse(match.time) < new Date() ?
+                          <h5><strong>Kicked Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
+                          :
+                          <h5><strong>Kick-Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
+                        }
+                        <h5><strong>Final Whistle:</strong> {moment(match.endTime).format('h:m a')}</h5>
+                        <h5><strong>Duration:</strong> {moment(match.endTime).diff(moment(match.time), 'minutes')} minutes</h5>
+                        { match.attending.length + 1 > 1?
+                          <h5>{match.attending.length + 1} players attending</h5>
+                          :
+                          <h5><strong>1 player attending</strong></h5>
+                        }
+                      </Link>
                     </div>)
                   :
                   <p className="noMatch">No upcoming fixtures</p>
