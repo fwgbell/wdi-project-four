@@ -46,8 +46,8 @@ const matchData = [{
   pitch: pitchIds[0]
 }, {
   hostedBy: userIds[0],
-  time: 'Mon Dec 10 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
-  endTime: 'Mon Dec 10 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
+  time: 'Tue Dec 11 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
+  endTime: 'Tue Dec 11 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Kick-About',
   pitch: pitchIds[0]
 }];

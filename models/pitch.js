@@ -24,9 +24,11 @@ pitchSchema.virtual('matches', {
 
 pitchSchema.virtual('averageRating')
   .get(function() {
-    return Math.round(this.reviews.reduce((sum, review) => {
+    const avg = this.reviews.reduce((sum, review) => {
       return sum + review.rating;
-    }, 0) / this.reviews.length);
+    }, 0) / this.reviews.length;
+
+    return avg.toFixed(1);
   });
 
 pitchSchema.set('toJSON', { virtuals: true });
