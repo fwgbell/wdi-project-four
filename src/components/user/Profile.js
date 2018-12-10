@@ -67,13 +67,14 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="column profileFixtures">
-              <h3 className="title is-4">Upcoming Matches</h3>
+              <h2 className="title is-2">{`${profile.username}'s fixtures`}</h2>
+              <h3 className="subtitle is-4">Upcoming Matches</h3>
               {upcoming && upcoming.map(match =>
                 <div key={match._id}>
                   <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
                 </div>
               )}
-              <h3 className="title is-4">Match History</h3>
+              <h3 className="subtitle is-4">Match History</h3>
               {history && history.map(match =>
                 <div key={match._id}>
                   <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
