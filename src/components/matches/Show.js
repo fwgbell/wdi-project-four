@@ -42,7 +42,7 @@ class MatchShow extends React.Component{
   render(){
     const match = this.state.match;
     return (
-      <div>
+      <div className="matchShow">
         {match ?
           Date.parse(match.endTime) > new Date() ?
             <div>
@@ -67,10 +67,16 @@ class MatchShow extends React.Component{
                 </div>}
               {match.attending.length > 0 &&
                 <div>
-                  <h2>Match Lineup:</h2>
-                  <p><Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></p>
+                  <h2 className="title is-2">Match Lineup:</h2>
+                  <div className="matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
+                    <img src={match.hostedBy.profilePicture}/>
+                    <h3>{match.hostedBy.username}</h3>
+                  </Link></div>
                   {match.attending.map(player =>
-                    <div key={player._id}><Link to={`/profile/${player._id}`}>{player.username}</Link></div>
+                    <div className="matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
+                      <img src={player.profilePicture} />
+                      <h3>{player.username}</h3>
+                    </Link></div>
                   )}
                 </div>
               }
@@ -85,10 +91,16 @@ class MatchShow extends React.Component{
               <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
               {match.attending.length > 0 &&
                 <div>
-                  <h2>Match Lineup:</h2>
-                  <p><Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></p>
+                  <h2 className="title is-2">Match Lineup:</h2>
+                  <div className="matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
+                    <img src={match.hostedBy.profilePicture}/>
+                    <h3>{match.hostedBy.username}</h3>
+                  </Link></div>
                   {match.attending.map(player =>
-                    <div key={player._id}><Link to={`/profile/${player._id}`}>{player.username}</Link></div>
+                    <div className="matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
+                      <img src={player.profilePicture} />
+                      <h3>{player.username}</h3>
+                    </Link></div>
                   )}
                 </div>
               }

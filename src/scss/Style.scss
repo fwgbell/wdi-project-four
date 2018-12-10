@@ -392,3 +392,26 @@ main{
     border: 1px solid;
   }
 }
+
+
+.matchShow{
+  .matchPlayer{
+    a{
+      border: 1px solid black;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      h3{
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      img{
+        width: 10rem;
+        height: 10rem;
+        border-radius: 100%;
+        margin: 2rem;
+      }
+    }
+  }
+}
