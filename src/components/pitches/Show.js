@@ -76,8 +76,11 @@ class PitchShow extends React.Component {
   render() {
     const pitch = this.state.pitch;
     let upcoming;
-    if(pitch){
+    if(pitch && pitch.matches){
       upcoming = pitch.matches.filter(match =>  Date.parse(match.endTime) > new Date());
+      upcoming.sort(function(a, b){
+        return Date.parse(a.time) - Date.parse(b.time);
+      });
     }
     return (
       <main>
@@ -107,31 +110,33 @@ class PitchShow extends React.Component {
                 <MapBox userPosition={null} pitches={[pitch]} />
               </div>
             </section>
-            <div className="column is-12">
+            <div className="column is-12 matchesSection">
               <h3>Fixture List</h3>
               <hr />
-              {upcoming.length > 0
-                ?
-                upcoming.map(match =>
-                  <div key={match._id}>
-                    <h4>{match.type}</h4>
-                    <h5><strong>Match Day:</strong> {moment(match.time).format('dddd Do')}</h5>
-                    { Date.parse(match.time) < new Date() ?
-                      <h5><strong>Kicked Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
-                      :
-                      <h5><strong>Kick Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
-                    }
-                    <h5><strong>Final Whistle:</strong> {moment(match.endTime).format('h:m a')}</h5>
-                    <h5><strong>Duration:</strong> {moment(match.endTime).diff(moment(match.time), 'minutes')} minutes</h5>
-                    { match.attending.length + 1 > 1?
-                      <h5>{match.attending.length + 1} players attending</h5>
-                      :
-                      <h5><strong>1 player attending</strong></h5>
-                    }
-                  </div>)
-                :
-                <p>No upcoming fixtures</p>
-              }
+              <div className="matchesContainer columns">
+                {upcoming && upcoming.length > 0
+                  ?
+                  upcoming.map(match =>
+                    <div key={match._id} className="pitchMatch column is-3">
+                      <h3>{match.type}</h3>
+                      <h5><strong>Match Day:</strong> {moment(match.time).format('dddd Do')}</h5>
+                      { Date.parse(match.time) < new Date() ?
+                        <h5><strong>Kicked Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
+                        :
+                        <h5><strong>Kick Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
+                      }
+                      <h5><strong>Final Whistle:</strong> {moment(match.endTime).format('h:m a')}</h5>
+                      <h5><strong>Duration:</strong> {moment(match.endTime).diff(moment(match.time), 'minutes')} minutes</h5>
+                      { match.attending.length + 1 > 1?
+                        <h5>{match.attending.length + 1} players attending</h5>
+                        :
+                        <h5><strong>1 player attending</strong></h5>
+                      }
+                    </div>)
+                  :
+                  <p className="noMatch">No upcoming fixtures</p>
+                }
+              </div>
             </div>
             <div className="column is-12 reviewContainer">
               <h3>Pitch Reviews</h3>

@@ -177,6 +177,29 @@ main{
       }
     }
   }
+  .matchesSection{
+    h3{
+      font-size: 30px;
+      font-weight: bold;
+    }
+    hr{
+      margin-top: 0;
+      margin-bottom: 1vh;
+    }
+    .matchesContainer{
+      .pitchMatch{
+        border: 1px solid;
+        margin: 0;
+        text-align: left;
+      }
+      .noMatch{
+        font-size: 40px;
+        width: 100%;
+        text-align: center;
+        margin: 50px 0;
+      }
+    }
+  }
   .reviewContainer{
     h3{
       font-size: 30px;
