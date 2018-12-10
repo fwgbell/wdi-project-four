@@ -234,6 +234,8 @@ main{
       }
       p{
         padding: 0.75rem;
+        text-align: center;
+        font-size: 18px;
       }
       div{
         width: 100%;
@@ -385,9 +387,8 @@ main{
       }
     }
   }
-  .history{
-    background-color: blue;
-    color: white;
+  .profileFixtures{
     text-align: center;
+    border: 1px solid;
   }
 }

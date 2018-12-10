@@ -3,6 +3,7 @@ const User = require('../models/user');
 function profileShowRoute(req, res, next){
   User
     .findById(req.params.id)
+    .populate('matches hosting')
     .then(user => res.json(user))
     .catch(next);
 }

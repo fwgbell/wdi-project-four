@@ -27,6 +27,22 @@ class Profile extends React.Component {
 
   render(){
     const profile = this.state.profile;
+    let allMatches;
+    const history = [];
+    const upcoming = [];
+    if(profile){
+      allMatches = profile.matches.concat(profile.hosting);
+      allMatches.sort(function(a, b){
+        return Date.parse(a.time) - Date.parse(b.time);
+      });
+      allMatches.forEach(function(match){
+        if(Date.parse(match.endTime) < new Date()){
+          history.push(match);
+        } else{
+          upcoming.push(match);
+        }
+      });
+    }
     return (
       <div className="profilePage">
         {profile
@@ -49,8 +65,19 @@ class Profile extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="column history">
-              Match history here
+            <div className="column profileFixtures">
+              <h3 className="title is-4">Upcoming Matches</h3>
+              {upcoming && upcoming.map(match =>
+                <div key={match._id}>
+                  <h4>{match.type.toUpperCase()}</h4>
+                </div>
+              )}
+              <h3 className="title is-4">Match History</h3>
+              {history && history.map(match =>
+                <div key={match._id}>
+                  <h4>{match.type.toUpperCase()}</h4>
+                </div>
+              )}
             </div>
           </div>
           :

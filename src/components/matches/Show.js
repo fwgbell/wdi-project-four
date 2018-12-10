@@ -48,7 +48,7 @@ class MatchShow extends React.Component{
             <h1>{match.type}</h1>
             <h1>Host: <Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></h1>
             <h2>Pitch: <Link to={`/pitches/${match.pitch._id}`}>{match.pitch.name}</Link></h2>
-            <p>Match Day: {moment(match.time).format('dddd Do')}</p>
+            <p>Match Day: {moment(match.time).format('dddd Do MMMM')}</p>
             <p>Kick-Off: {moment(match.time).format('h:m a')}</p>
             <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
             {match.hostedBy._id === decodeToken().sub ?
