@@ -12,6 +12,7 @@ class PitchIndex extends React.Component {
     };
     this.sortByDistance = this.sortByDistance.bind(this);
     this.sortByScore = this.sortByScore.bind(this);
+    this.sortByMatch = this.sortByMatch.bind(this);
   }
 
   sortByDistance(){
@@ -35,6 +36,28 @@ class PitchIndex extends React.Component {
     this.setState({ titleText: 'Highest Scoring Pitches', filter: 'score', pitches: pitches});
   }
 
+  sortByMatch(){
+    let pitches = this.state.pitches;
+    pitches = pitches.map(function(pitch){
+      if(pitch.matches)pitch.matches = pitch.matches.filter(function(match){
+        return Date.parse(match.endTime) > new Date();
+      });
+      if(pitch.matches)pitch.matches = pitch.matches.sort(function(a, b){
+        return Date.parse(a.time) - Date.parse(b.time);
+      });
+      if(pitch.matches.length > 0){
+        pitch.nextKickOff = pitch.matches[0].time;
+      } else {
+        pitch.nextKickOff = 'Mon Dec 10 3018 12:20:28 GMT+0000 (Greenwich Mean Time)';
+      }
+      return pitch;
+    });
+    pitches = pitches.sort(function(a, b){
+      return Date.parse(a.nextKickOff) - Date.parse(b.nextKickOff);
+    });
+    this.setState({ titleText: 'Next Kick Off', filter: 'match', pitches: pitches});
+  }
+
   componentDidMount() {
     axios.get('/api/pitches')
       .then(res => {
@@ -52,6 +75,7 @@ class PitchIndex extends React.Component {
           <p>Sort by:</p>
           <button onClick={this.sortByDistance} className="button">Distance</button>
           <button onClick={this.sortByScore} className="button">Score</button>
+          <button onClick={this.sortByMatch} className="button">Match</button>
         </div>
         <h1 className="title column is-12">{this.state.titleText}</h1>
         {this.state.pitches

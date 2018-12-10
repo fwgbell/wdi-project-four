@@ -3,6 +3,7 @@ const Pitch = require('../models/pitch');
 function indexRoute(req, res, next) {
   Pitch
     .find()
+    .populate('matches')
     .then(pitches => res.json(pitches))
     .catch(next);
 }
