@@ -6,7 +6,8 @@ const matchSchema = new mongoose.Schema({
   endTime: Date,
   type: { type: String, enum: ['Kick-About', 'Headers and Volleys', 'League Match'] },
   pitch: { type: mongoose.Schema.ObjectId, ref: 'Pitch' },
-  attending: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+  attending: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  hasRated: [{ type: mongoose.Schema.ObjectId, ref: 'User'}]
 });
 
 

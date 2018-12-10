@@ -8,10 +8,15 @@ import moment from 'moment';
 class MatchShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      isRating: false
+    };
     this.attendMatch = this.attendMatch.bind(this);
     this.leaveMatch = this.leaveMatch.bind(this);
     this.cancelMatch = this.cancelMatch.bind(this);
+    this.beginRating = this.beginRating.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
   attendMatch(){
@@ -32,6 +37,15 @@ class MatchShow extends React.Component{
   cancelMatch(){
     axios.delete(`/api/matches/${this.props.match.params.id}`, authorizationHeader())
       .then( () => this.props.history.push('/pitches'));
+  }
+
+  beginRating(){
+    this.setState({ isRating: true });
+  }
+
+  handleChange({ target: { name, value }}){
+    console.log(this.state);
+    this.setState({ [name]: value });
   }
 
   componentDidMount() {
@@ -94,27 +108,74 @@ class MatchShow extends React.Component{
                   <h2 className="column is-12 title is-2">Match Lineup:</h2>
                   <div className="column is-4 matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
                     <img src={match.hostedBy.profilePicture}/>
-                    <h3>{match.hostedBy.username}</h3>
-                    {
-                      match.hostedBy._id === decodeToken().sub?
-                        <p>you</p>
-                        :
-                        <p>rate your host</p>
-                    }
-                  </Link></div>
+                    <h3>{match.hostedBy.username}</h3></Link>
+                  {
+                    match.hostedBy._id !== decodeToken().sub && !match.hasRated.includes(decodeToken().sub)?
+                      <button onClick={this.beginRating}>rate your host</button>
+                      :
+                      <p>yo</p>
+                  }
+                  </div>
                   {match.attending.map(player =>
                     <div className="column is-4 matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
                       <img src={player.profilePicture} />
-                      <h3>{player.username}</h3>
-                      {
-                        player._id === decodeToken().sub?
-                          <p>you</p>
-                          :
-                          <p>rate this player</p>
-                      }
-                    </Link></div>
+                      <h3>{player.username}</h3></Link>
+                    {
+                      player._id !== decodeToken().sub && !match.hasRated.includes(decodeToken().sub)?
+                        <button>rate this player</button>
+                        :
+                        <p>yo</p>
+                    }
+                    </div>
                   )}
                 </div>
+              }
+              {this.state.isRating &&
+                <form>
+                  {match.hostedBy._id !== decodeToken().sub &&
+                    <div>
+                      <h2>{ match.hostedBy.username}</h2>
+                      <div className="field">
+                        <label className="label">Host Rating</label>
+                        <div className="control">
+                          <input onChange={this.handleChange} value={this.state.hostHostRating || ''} name="hostHostRating" className="input" type="number" min="1" max="5" required/>
+                        </div>
+                      </div>
+                      <div className="field">
+                        <label className="label">Chill Rating</label>
+                        <div className="control">
+                          <input onChange={this.handleChange} value={this.state.hostChillRating || ''} name="hostChillRating" className="input" type="number" min="1" max="5" required/>
+                        </div>
+                      </div>
+                      <div className="field">
+                        <label className="label">Skill Rating</label>
+                        <div className="control">
+                          <input onChange={this.handleChange} value={this.state.hostSkillRating || ''} name="hostSkillRating" className="input" type="number" min="1" max="5" required/>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                  {
+                    match.attending.map(player =>
+                      <div key={player._id}>
+                        <h2>{ player.username}</h2>
+                        <div className="field">
+                          <label className="label">Chill Rating</label>
+                          <div className="control">
+                            <input onChange={this.handleChange} value={this.state[(player.username + 'ChillRating')] || ''} name={`${player.username}ChillRating`} className="input" type="number" min="1" max="5" required/>
+                          </div>
+                        </div>
+                        <div className="field">
+                          <label className="label">Skill Rating</label>
+                          <div className="control">
+                            <input onChange={this.handleChange} value={this.state[(player.username + 'SkillRating')] || ''} name={`${player.username}SkillRating`} className="input" type="number" min="1" max="5" required/>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
+                  <button className="button is-rounded">Submit</button>
+                </form>
               }
             </div>
           :

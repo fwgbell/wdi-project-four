@@ -396,11 +396,11 @@ main{
 
 .matchShow{
   .matchPlayer{
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
     a{
-      border: 1px solid black;
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
       color: black;
       h3{
         text-align: center;
@@ -408,8 +408,8 @@ main{
         font-weight: bold;
       }
       img{
-        width: 5rem;
-        height: 5rem;
+        width: 7rem;
+        height: 7rem;
         border-radius: 100%;
         margin: 2rem;
       }

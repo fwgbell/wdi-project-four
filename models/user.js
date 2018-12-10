@@ -20,7 +20,10 @@ const userSchema = new mongoose.Schema({
       'Southampton', 'Tottenham Hotspur', 'Watford',
       'West Ham United', 'Wolverhampton', 'NONE OF THE ABOVE'
     ]},
-  country: String
+  country: String,
+  skillRating: [Number],
+  hostRating: [Number],
+  chillRating: [Number]
 });
 
 userSchema.methods.validatePassword = function validatePassword(password){
