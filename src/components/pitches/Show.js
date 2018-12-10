@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 import { authorizationHeader, decodeToken } from '../../lib/auth';
 import MapBox from '../common/MapBox';
 
@@ -74,7 +75,10 @@ class PitchShow extends React.Component {
 
   render() {
     const pitch = this.state.pitch;
-    console.log(pitch);
+    let upcoming;
+    if(pitch){
+      upcoming = pitch.matches.filter(match =>  Date.parse(match.endTime) > new Date());
+    }
     return (
       <main>
         {pitch
@@ -106,11 +110,24 @@ class PitchShow extends React.Component {
             <div className="column is-12">
               <h3>Fixture List</h3>
               <hr />
-              {pitch.matches.length > 0
+              {upcoming.length > 0
                 ?
-                pitch.matches.map(match =>
+                upcoming.map(match =>
                   <div key={match._id}>
-                    
+                    <h4>{match.type}</h4>
+                    <h5><strong>Match Day:</strong> {moment(match.time).format('dddd Do')}</h5>
+                    { Date.parse(match.time) < new Date() ?
+                      <h5><strong>Kicked Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
+                      :
+                      <h5><strong>Kick Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
+                    }
+                    <h5><strong>Final Whistle:</strong> {moment(match.endTime).format('h:m a')}</h5>
+                    <h5><strong>Duration:</strong> {moment(match.endTime).diff(moment(match.time), 'minutes')} minutes</h5>
+                    { match.attending.length + 1 > 1?
+                      <h5>{match.attending.length + 1} players attending</h5>
+                      :
+                      <h5><strong>1 player attending</strong></h5>
+                    }
                   </div>)
                 :
                 <p>No upcoming fixtures</p>
