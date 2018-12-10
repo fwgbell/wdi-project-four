@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { authorizationHeader } from '../../lib/auth';
 
@@ -69,13 +70,13 @@ class Profile extends React.Component {
               <h3 className="title is-4">Upcoming Matches</h3>
               {upcoming && upcoming.map(match =>
                 <div key={match._id}>
-                  <h4>{match.type.toUpperCase()}</h4>
+                  <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
                 </div>
               )}
               <h3 className="title is-4">Match History</h3>
               {history && history.map(match =>
                 <div key={match._id}>
-                  <h4>{match.type.toUpperCase()}</h4>
+                  <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
                 </div>
               )}
             </div>
