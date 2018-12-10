@@ -19,11 +19,12 @@ function createRoute(req, res, next){
 function updateRoute(req, res, next){
   Match
     .findById(req.params.id)
-    .populate('hostedBy pitch attending')
+    .populate('hostedBy pitch')
     .then(match => {
       Object.assign(match, req.body);
       return match.save();
     })
+    .then(match => Match.populate(match, 'attending'))
     .then(match => res.json(match))
     .catch(next);
 }

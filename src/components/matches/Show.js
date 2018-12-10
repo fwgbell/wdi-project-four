@@ -10,6 +10,8 @@ class MatchShow extends React.Component{
     super(props);
     this.state = {};
     this.attendMatch = this.attendMatch.bind(this);
+    this.leaveMatch = this.leaveMatch.bind(this);
+    this.cancelMatch = this.cancelMatch.bind(this);
   }
 
   attendMatch(){
@@ -17,6 +19,19 @@ class MatchShow extends React.Component{
     sendObject.attending.push(decodeToken().sub);
     axios.put(`/api/matches/${this.props.match.params.id}`, sendObject, authorizationHeader())
       .then(result => this.setState({ match: result.data}));
+  }
+
+  leaveMatch(){
+    const sendObject = this.state.match;
+    const index = sendObject.attending.findIndex(player => player._id === decodeToken().sub);
+    sendObject.attending.splice(index, 1);
+    axios.put(`/api/matches/${this.props.match.params.id}`, sendObject, authorizationHeader())
+      .then(result => this.setState({ match: result.data}));
+  }
+
+  cancelMatch(){
+    axios.delete(`/api/matches/${this.props.match.params.id}`, authorizationHeader())
+      .then( () => this.props.history.push('/pitches'));
   }
 
   componentDidMount() {
@@ -35,11 +50,16 @@ class MatchShow extends React.Component{
             <p>Match Day: {moment(match.time).format('dddd Do')}</p>
             <p>Kick-Off: {moment(match.time).format('h:m a')}</p>
             <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
-            {!match.attending.find(player => player._id === decodeToken().sub) ?
-              <button onClick={this.attendMatch}>Attend</button>
+            {match.hostedBy._id === decodeToken().sub ?
+              <button onClick={this.cancelMatch}>Call Off Match</button>
               :
-              <button>UnAttend</button>
-            }
+              <div>
+                {!match.attending.find(player => player._id === decodeToken().sub) ?
+                  <button onClick={this.attendMatch}>Attend</button>
+                  :
+                  <button onClick={this.leaveMatch}>Leave</button>
+                }
+              </div>}
             {match.attending.length > 0 &&
               <div>
                 <h2>Players:</h2>
