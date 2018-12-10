@@ -51,7 +51,10 @@ class MatchShow extends React.Component{
             <p>Kick-Off: {moment(match.time).format('h:m a')}</p>
             <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
             {match.hostedBy._id === decodeToken().sub ?
-              <button onClick={this.cancelMatch}>Call Off Match</button>
+              <div>
+                <button onClick={this.cancelMatch}>Call Off Match</button>
+                <button onClick={this.editMatch}>Edit Match</button>
+              </div>
               :
               <div>
                 {!match.attending.find(player => player._id === decodeToken().sub) ?

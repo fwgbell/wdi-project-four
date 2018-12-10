@@ -129,7 +129,7 @@ class PitchShow extends React.Component {
                         <h5><strong>Final Whistle:</strong> {moment(match.endTime).format('h:m a')}</h5>
                         <h5><strong>Duration:</strong> {moment(match.endTime).diff(moment(match.time), 'minutes')} minutes</h5>
                         { match.attending.length + 1 > 1?
-                          <h5>{match.attending.length + 1} players attending</h5>
+                          <h5><strong>{match.attending.length + 1} players attending</strong></h5>
                           :
                           <h5><strong>1 player attending</strong></h5>
                         }
