@@ -90,16 +90,28 @@ class MatchShow extends React.Component{
               <p>Kicked-Off: {moment(match.time).format('h:m a')}</p>
               <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
               {match.attending.length > 0 &&
-                <div>
-                  <h2 className="title is-2">Match Lineup:</h2>
-                  <div className="matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
+                <div className="columns is-multiline">
+                  <h2 className="column is-12 title is-2">Match Lineup:</h2>
+                  <div className="column is-4 matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
                     <img src={match.hostedBy.profilePicture}/>
                     <h3>{match.hostedBy.username}</h3>
+                    {
+                      match.hostedBy._id === decodeToken().sub?
+                        <p>you</p>
+                        :
+                        <p>rate your host</p>
+                    }
                   </Link></div>
                   {match.attending.map(player =>
-                    <div className="matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
+                    <div className="column is-4 matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
                       <img src={player.profilePicture} />
                       <h3>{player.username}</h3>
+                      {
+                        player._id === decodeToken().sub?
+                          <p>you</p>
+                          :
+                          <p>rate this player</p>
+                      }
                     </Link></div>
                   )}
                 </div>
