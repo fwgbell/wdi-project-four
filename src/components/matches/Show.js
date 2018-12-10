@@ -47,7 +47,7 @@ class MatchShow extends React.Component{
           <div>
             <h1>{match.type}</h1>
             <h1>Host: <Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></h1>
-            <h2>Pitch: {match.pitch.name}</h2>
+            <h2>Pitch: <Link to={`/pitches/${match.pitch._id}`}>{match.pitch.name}</Link></h2>
             <p>Match Day: {moment(match.time).format('dddd Do')}</p>
             <p>Kick-Off: {moment(match.time).format('h:m a')}</p>
             <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
@@ -66,9 +66,10 @@ class MatchShow extends React.Component{
               </div>}
             {match.attending.length > 0 &&
               <div>
-                <h2>Players:</h2>
+                <h2>Match Lineup:</h2>
+                <p><Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></p>
                 {match.attending.map(player =>
-                  <div key={player._id}>{player.username}</div>
+                  <div key={player._id}><Link to={`/profile/${player._id}`}>{player.username}</Link></div>
                 )}
               </div>
             }

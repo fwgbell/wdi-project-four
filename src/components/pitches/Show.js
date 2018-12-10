@@ -93,7 +93,7 @@ class PitchShow extends React.Component {
               <div className="columns">
                 <div className="column is-6">
                   {pitch.averageRating?
-                    <p>Pitch Score: {pitch.averageRating}/5</p>
+                    <p>Pitch Score: {pitch.averageRating}/5.0</p>
                     :
                     <p>Not Yet Rated</p>
                   }

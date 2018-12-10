@@ -4,12 +4,12 @@ function createRoute(req, res, next){
   req.body.reviewedBy = req.currentUser._id;
   Pitch
     .findById(req.params.id)
-    .populate('uploadedBy reviews.reviewedBy')
+    .populate('uploadedBy reviews.reviewedBy matches')
     .then(pitch => {
       pitch.reviews.push(req.body);
       return pitch.save();
     })
-    .then(pitch => Pitch.populate(pitch, 'uploadedBy reviews.reviewedBy'))
+    .then(pitch => Pitch.populate(pitch, 'uploadedBy reviews.reviewedBy matches'))
     .then(pitch =>  res.json(pitch))
     .catch(next);
 }
@@ -17,7 +17,7 @@ function createRoute(req, res, next){
 function updateRoute(req, res, next){
   Pitch
     .findById(req.params.id)
-    .populate('uploadedBy reviews.reviewedBy')
+    .populate('uploadedBy reviews.reviewedBy matches')
     .then(pitch => {
       const review = pitch.reviews.id(req.params.reviewId);
       if(!review.reviewedBy._id.equals(req.currentUser._id)) {
@@ -26,7 +26,7 @@ function updateRoute(req, res, next){
       review.set(req.body);
       return pitch.save();
     })
-    .then(pitch => Pitch.populate(pitch, 'uploadedBy reviews.reviewedBy'))
+    .then(pitch => Pitch.populate(pitch, 'uploadedBy reviews.reviewedBy matches'))
     .then(pitch => res.json(pitch))
     .catch(next);
 }
@@ -34,7 +34,7 @@ function updateRoute(req, res, next){
 function deleteRoute(req, res, next){
   Pitch
     .findById(req.params.id)
-    .populate('uploadedBy reviews.reviewedBy')
+    .populate('uploadedBy reviews.reviewedBy matches')
     .then(pitch => {
       const review = pitch.reviews.id(req.params.reviewId);
       if(!review.reviewedBy._id.equals(req.currentUser._id)) {

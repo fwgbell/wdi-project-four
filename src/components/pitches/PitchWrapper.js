@@ -6,7 +6,7 @@ function PitchWrapper({ pitch, filter }){
   return (
     <Link className="column is-6 pitchWrapper" to={`/pitches/${pitch._id}`}>
       {pitch.averageRating && filter === 'score'?
-        <h2>{pitch.name} - {pitch.averageRating}/5</h2>
+        <h2>{pitch.name} - {pitch.averageRating}/5.0</h2>
         :
         pitch.distance && filter === 'distance'?
           <h2>{pitch.name} - {pitch.distance.toFixed(2)} Km Away</h2>

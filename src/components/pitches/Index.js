@@ -74,8 +74,8 @@ class PitchIndex extends React.Component {
       <section className="indexPage columns is-multiline">
         <div className="column is-12">
           <p>Sort by:</p>
-          <button onClick={this.sortByDistance} className="button">Distance</button>
           <button onClick={this.sortByScore} className="button">Score</button>
+          <button onClick={this.sortByDistance} className="button">Distance</button>
           <button onClick={this.sortByMatch} className="button">Kick-Off</button>
         </div>
         <h1 className="title column is-12">{this.state.titleText}</h1>
