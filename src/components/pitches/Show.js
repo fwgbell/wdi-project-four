@@ -123,7 +123,7 @@ class PitchShow extends React.Component {
                       { Date.parse(match.time) < new Date() ?
                         <h5><strong>Kicked Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
                         :
-                        <h5><strong>Kick Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
+                        <h5><strong>Kick-Off:</strong> {moment(match.time).format('h:m a')} ({moment(match.time).fromNow()})</h5>
                       }
                       <h5><strong>Final Whistle:</strong> {moment(match.endTime).format('h:m a')}</h5>
                       <h5><strong>Duration:</strong> {moment(match.endTime).diff(moment(match.time), 'minutes')} minutes</h5>

@@ -38,11 +38,12 @@ class PitchIndex extends React.Component {
 
   sortByMatch(){
     let pitches = this.state.pitches;
+    console.log(pitches);
     pitches = pitches.map(function(pitch){
-      if(pitch.matches)pitch.matches = pitch.matches.filter(function(match){
+      pitch.matches = pitch.matches.filter(function(match){
         return Date.parse(match.endTime) > new Date();
       });
-      if(pitch.matches)pitch.matches = pitch.matches.sort(function(a, b){
+      pitch.matches = pitch.matches.sort(function(a, b){
         return Date.parse(a.time) - Date.parse(b.time);
       });
       if(pitch.matches.length > 0){
@@ -55,7 +56,7 @@ class PitchIndex extends React.Component {
     pitches = pitches.sort(function(a, b){
       return Date.parse(a.nextKickOff) - Date.parse(b.nextKickOff);
     });
-    this.setState({ titleText: 'Next Kick Off', filter: 'match', pitches: pitches});
+    this.setState({ titleText: 'Next Kick-Off', filter: 'match', pitches: pitches});
   }
 
   componentDidMount() {
@@ -75,7 +76,7 @@ class PitchIndex extends React.Component {
           <p>Sort by:</p>
           <button onClick={this.sortByDistance} className="button">Distance</button>
           <button onClick={this.sortByScore} className="button">Score</button>
-          <button onClick={this.sortByMatch} className="button">Match</button>
+          <button onClick={this.sortByMatch} className="button">Kick-Off</button>
         </div>
         <h1 className="title column is-12">{this.state.titleText}</h1>
         {this.state.pitches
