@@ -3,6 +3,7 @@ mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 const Pitch = require('../models/pitch');
 const User = require('../models/user');
+const Match = require('../models/match');
 
 const userIds = [
   '5bf17051d4a071297aa4b6ea',
@@ -11,6 +12,7 @@ const userIds = [
   '5bf17051d4a071297aa4b6ed',
   '5bf17051d4a071297aa4b6ee'];
 
+const pitchIds = ['5c0d442bf8d7918360005c4d', '5c0d442bf8d7918360005c50'];
 
 const userData = [{
   _id: userIds[0],
@@ -36,10 +38,26 @@ const userData = [{
   country: 'England'
 }];
 
+const matchData = [{
+  hostedBy: userIds[1],
+  time: 'Mon Dec 10 2018 10:15:00 GMT+0000 (Greenwich Mean Time)',
+  endTime: 'Mon Dec 10 2018 10:45:28 GMT+0000 (Greenwich Mean Time)',
+  type: 'Kick-About',
+  pitch: pitchIds[0]
+}, {
+  hostedBy: userIds[0],
+  time: 'Mon Dec 10 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
+  endTime: 'Mon Dec 10 2018 12:45:28 GMT+0000 (Greenwich Mean Time)',
+  type: 'Kick-About',
+  pitch: pitchIds[0]
+}];
+
+
 mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase();
 
   Pitch.create([{
+    _id: pitchIds[0],
     uploadedBy: userIds[0],
     name: 'Churchill Gardens',
     lat: 51.486425,
@@ -57,6 +75,7 @@ mongoose.connect(dbURI, (err, db) => {
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     }]
   }, {
+    _id: pitchIds[1],
     uploadedBy: userIds[1],
     name: 'Battersea Church Road',
     lat: 51.477472,
@@ -75,8 +94,13 @@ mongoose.connect(dbURI, (err, db) => {
         .create(userData)
         .then(users => {
           console.log(`${users.length} users created`);
-        })
-        .catch(err => console.log(err))
-        .finally(() => mongoose.connection.close());
+          Match
+            .create(matchData)
+            .then(matches => {
+              console.log(`${matches.length} matches created`);
+            })
+            .catch(err => console.log(err))
+            .finally(() => mongoose.connection.close());
+        });
     });
 });

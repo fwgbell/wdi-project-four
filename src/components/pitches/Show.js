@@ -103,6 +103,19 @@ class PitchShow extends React.Component {
                 <MapBox userPosition={null} pitches={[pitch]} />
               </div>
             </section>
+            <div className="column is-12">
+              <h3>Fixture List</h3>
+              <hr />
+              {pitch.matches.length > 0
+                ?
+                pitch.matches.map(match =>
+                  <div key={match._id}>
+                    
+                  </div>)
+                :
+                <p>No upcoming fixtures</p>
+              }
+            </div>
             <div className="column is-12 reviewContainer">
               <h3>Pitch Reviews</h3>
               <hr />
