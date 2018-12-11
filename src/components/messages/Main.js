@@ -8,14 +8,23 @@ import Compose from './Compose';
 class Messages extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      newThread: false
+    };
     this.chooseConversation = this.chooseConversation.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.createMessage = this.createMessage.bind(this);
+    this.newThread = this.newThread.bind(this);
+  }
+
+  newThread(){
+    axios.get('/api/users', authorizationHeader())
+      .then(result => this.setState({ users: result.data, newThread: true }));
   }
 
   chooseConversation(userId) {
-    this.setState({ conversationUserId: userId });
+    console.log(event.target);
+    this.setState({ conversationUserId: userId, active: event.target.id });
   }
 
   createMessage() {
@@ -24,7 +33,7 @@ class Messages extends React.Component {
       to: this.state.conversationUserId,
       content: this.state.newMessage
     }, authorizationHeader())
-      .then(result => this.setState({ messages: this.state.messages.concat(result.data) }));
+      .then(result => this.setState({ messages: this.state.messages.concat(result.data), newMessage: '', newThread: false }));
   }
 
   handleChange({ target: { name, value }}){
@@ -42,11 +51,11 @@ class Messages extends React.Component {
         <h1 className="title is-2">Messages</h1>
         <div className="message-container">
           <div className="sidebar">
-            <Sidebar messages={this.state.messages} handleClick={this.chooseConversation}/>
+            <Sidebar active={this.state.active} messages={this.state.messages} newThread={this.newThread} handleClick={this.chooseConversation}/>
           </div>
           <div className="messages-main">
             <div className="conversation">
-              <Conversation userId={this.state.conversationUserId} messages={this.state.messages}/>
+              <Conversation users={this.state.users} handleChange={this.handleChange} userId={this.state.conversationUserId} messages={this.state.messages} newThread={this.state.newThread}/>
             </div>
             <div className="compose">
               <Compose newMessage={this.state.newMessage || ''} handleClick={this.createMessage} handleChange={this.handleChange} />

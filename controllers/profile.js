@@ -1,5 +1,13 @@
 const User = require('../models/user');
 
+function profileIndexrRoute(req, res, next){
+  User
+    .find()
+    .then(users => res.json(users))
+    .catch(next);
+}
+
+
 function profileShowRoute(req, res, next){
   User
     .findById(req.params.id)
@@ -20,6 +28,7 @@ function profileUpdateRouote(req, res, next){
 }
 
 module.exports = {
+  index: profileIndexrRoute,
   show: profileShowRoute,
   update: profileUpdateRouote
 };

@@ -3,13 +3,29 @@ import moment from 'moment';
 import { decodeToken } from '../../lib/auth';
 
 
-function Conversation({ userId, messages }) {
+function Conversation({ userId, messages, newThread, users, handleChange }) {
   const filtered = messages && messages.filter(message =>
     message.from._id === userId || message.to._id === userId
   );
-  console.log('filtered is', filtered);
   return (
     <div>
+      {newThread && <div>
+        <div className="field">
+          <label className="label">Who would you like to message?</label>
+          <div className="control">
+            <div className="select">
+              <select name="conversationUserId" onChange={handleChange} value={userId || ''} required>
+                <option>Please Select</option>
+                {
+                  users.map(user =>
+                    user._id !== decodeToken().sub && <option key={user._id} value={user._id}>{user.username}</option>
+                  )
+                }
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>}
       {filtered && filtered.map(message =>
         message.from._id === decodeToken().sub ?
           <div key={message._id} className="fromUser">

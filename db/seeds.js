@@ -67,10 +67,6 @@ const messageData = [
     from: userIds[0],
     to: userIds[1],
     content: 'Messages are working!!'
-  }, {
-    from: userIds[1],
-    to: userIds[2],
-    content: 'Hi Rob! How\'s life?'
   }
 ];
 

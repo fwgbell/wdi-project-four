@@ -27,6 +27,8 @@ router.route('/pitches/:id/reviews/:reviewId')
 router.post('/register', auth.register);
 router.post('/login', auth.login);
 
+router.get('/users', secureRoute, profile.index);
+
 router.route('/profile/:id')
   .get(secureRoute, profile.show)
   .put(secureRoute, profile.update);

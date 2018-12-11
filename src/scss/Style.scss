@@ -426,12 +426,31 @@ main{
     height: 500px;
     justify-content: center;
     .sidebar {
-      padding: 10px;
+      padding: 10px 0 10px 0;
       border: 5px solid;
       border-right: 0;
       border-radius: 2px;
+      min-width: 100px;
+      div{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+        button{
+          margin-bottom: 10px;
+        }
+      }
+      .active{
+        background-color: #075e54;
+        color: white;
+      }
       p{
         cursor: pointer;
+        padding: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        width: 100%;
       }
     }
     .messages-main {
@@ -453,6 +472,7 @@ main{
           text-align: right;
           border-radius: 20px;
           border-bottom-right-radius: 0;
+          font-size: 18px;
           p{
             margin-right: 20px;
           }
@@ -463,6 +483,7 @@ main{
           padding: 5px;
           border-radius: 20px;
           border-bottom-left-radius: 0;
+          font-size: 18px;
           p{
             strong{
               color: orange;
