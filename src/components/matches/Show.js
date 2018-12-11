@@ -71,7 +71,6 @@ class MatchShow extends React.Component{
       };
       sendObject.ratings.push(playerObject);
     }
-    console.log(sendObject);
     axios.post('/api/match/rating', sendObject, authorizationHeader())
       .then(result => this.setState({ match: result.data }));
   }

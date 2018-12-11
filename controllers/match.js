@@ -39,13 +39,14 @@ function deleteRoute(req, res, next){
 }
 
 function rateRoute(req, res, next){
-  console.log(req.body);
   const ratings = req.body.ratings;
   Promise.all(ratings.map(rating => {
     User
       .findById(rating._id)
       .then(user => {
-        Object.assign(user, rating);
+        user.chillRating.push(rating.chillRating);
+        user.skillRating.push(rating.skillRating);
+        if(rating.hostRating) user.hostRating.push(rating.hostRating);
         return user.save();
       });
   }))
