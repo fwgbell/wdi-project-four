@@ -37,6 +37,18 @@ const userData = [{
   role2: 'Top Man',
   club: 'Arsenal',
   country: 'England'
+}, {
+  _id: userIds[2],
+  username: 'Francis-dinho',
+  email: 'a@a',
+  password: 'pass',
+  profilePicture: 'https://media.licdn.com/dms/image/C4D03AQFEtVumC_yOng/profile-displayphoto-shrink_800_800/0?e=1550102400&v=beta&t=vnTCckTr5JST_tCBfYTxJYOhUuysoBocHu0VUhKpxgI',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
+  role1: '💦Water Boy💦',
+  role2: 'Top Man',
+  club: 'Crystal Palace',
+  country: 'China',
+  likes: [userIds[0]]
 }];
 
 const matchData = [{

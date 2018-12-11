@@ -431,7 +431,7 @@ main{
       border: 5px solid;
       border-right: 0;
       border-radius: 2px;
-      min-width: 100px;
+      min-width: 150px;
       div{
         display: flex;
         align-items: center;
@@ -508,6 +508,47 @@ main{
 .findPage{
   display: flex;
   justify-content: center;
+  .noMore{
+    font-size: 70px;
+    text-align: center;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    min-height: 80vh;
+    i{
+      font-size: 200px;
+    }
+  }
+  .matchWrapper{
+    position: absolute;
+    background-color: black;
+    width: 350px;
+    height: 500px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    font-size: 26px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+      margin: 20px 0;
+    }
+    h2{
+      margin: 10px 0;
+    }
+    i{
+      cursor: pointer;
+      transition: font-size 2s;
+    }
+    i:hover{
+      font-size: 40px;
+    }
+    img{
+      width: 50%;
+      border-radius: 100%;
+    }
+  }
   .fifaCard{
     height: 500px;
     width: 300px;
