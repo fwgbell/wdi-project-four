@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import { decodeToken } from '../../lib/auth';
+
 
 function Conversation({ userId, messages }) {
   const filtered = messages && messages.filter(message =>
@@ -9,18 +11,23 @@ function Conversation({ userId, messages }) {
   return (
     <div>
       {filtered && filtered.map(message =>
-        <div key={message._id} className="media">
-          <div className="media-left">
-            <figure className="image is-48x48">
-              <img src={message.from.profilePicture}/>
-            </figure>
+        message.from._id === decodeToken().sub ?
+          <div key={message._id} className="fromUser">
+            <p>
+              {message.content}
+              <br />
+              <small>{moment(message.createdAt).fromNow()}</small>
+            </p>
           </div>
-          <p>
-            {message.content}
-            <br />
-            <small>{moment(message.createdAt).fromNow()}</small>
-          </p>
-        </div>
+          :
+          <div key={message._id} className="toUser">
+            <p>
+              <strong>{message.from.username} </strong>
+              {message.content}
+              <br />
+              <small>{moment(message.createdAt).fromNow()}</small>
+            </p>
+          </div>
       )}
     </div>
   );

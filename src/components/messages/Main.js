@@ -19,6 +19,7 @@ class Messages extends React.Component {
   }
 
   createMessage() {
+    if(!this.state.conversationUserId || !this.state.newMessage) return;
     axios.post('/api/messages', {
       to: this.state.conversationUserId,
       content: this.state.newMessage
@@ -37,7 +38,7 @@ class Messages extends React.Component {
 
   render() {
     return(
-      <main>
+      <div className="messagesPage">
         <h1 className="title is-2">Messages</h1>
         <div className="message-container">
           <div className="sidebar">
@@ -52,7 +53,7 @@ class Messages extends React.Component {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     );
   }
 }
