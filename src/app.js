@@ -19,6 +19,7 @@ import PitchEdit from './components/pitches/Edit';
 import PitchMap from './components/pitches/PitchesMap';
 import Profile from './components/user/Profile';
 import Messages from './components/messages/Main';
+import FindPlayers from './components/user/FindPlayers';
 
 class App extends React.Component {
 
@@ -40,6 +41,7 @@ class App extends React.Component {
               <Route path='/matches/:id' component={MatchesShow}/>
               <Route path="/profile/:id" component={Profile} />
               <Route exact path='/messages' component={Messages}/>
+              <Route exact path='/find' component={FindPlayers}/>
               <Route exact path="/login" component={AuthLogin} />
               <Route exact path="/register" component={AuthRegister} />
             </Switch>

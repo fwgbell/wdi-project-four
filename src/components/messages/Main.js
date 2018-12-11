@@ -23,7 +23,6 @@ class Messages extends React.Component {
   }
 
   chooseConversation(userId) {
-    console.log(event.target);
     this.setState({ conversationUserId: userId, active: event.target.id });
   }
 
