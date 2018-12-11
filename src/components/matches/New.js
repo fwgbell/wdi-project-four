@@ -47,6 +47,7 @@ class MatchNew extends React.Component{
                   <option>Please select</option>
                   <option value="Kick-About">Kick-About</option>
                   <option value="Headers and Volleys">Headers and Volleys</option>
+                  <option value="Baby">Baby</option>
                 </select>
               </div>
             </div>
