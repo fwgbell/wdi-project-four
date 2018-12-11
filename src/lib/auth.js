@@ -26,3 +26,7 @@ export function authorizationHeader() {
     headers: { Authorization: 'Bearer ' + getToken() }
   };
 }
+
+export function tokenUserId() {
+  return decodeToken().sub;
+}
