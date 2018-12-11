@@ -27,8 +27,36 @@ function profileUpdateRouote(req, res, next){
     .catch(next);
 }
 
+function likeProfile(req, res, next){
+  User
+    .findById(req.currentUser._id)
+    .then(user => {
+      user.likes.push(req.body);
+      return user.save();
+    })
+    .then(User
+      .find()
+      .then(users => res.json(users)))
+    .catch(next);
+}
+
+function dislikeProfile(req, res, next){
+  User
+    .findById(req.currentUser._id)
+    .then(user => {
+      user.dislikes.push(req.body);
+      return user.save();
+    })
+    .then(User
+      .find()
+      .then(users => res.json(users)))
+    .catch(next);
+}
+
 module.exports = {
   index: profileIndexrRoute,
   show: profileShowRoute,
-  update: profileUpdateRouote
+  update: profileUpdateRouote,
+  like: likeProfile,
+  dislike: dislikeProfile
 };

@@ -2,7 +2,7 @@ const Message = require('../models/message');
 
 function indexRoute(req, res, next) {
   Message.find({ $or: [{ from: req.currentUser._id }, { to: req.currentUser._id }] })
-    .populate('from to', 'username profilePicture')
+    .populate('from to')
     .sort('createdAt')
     .then(messages => res.json(messages))
     .catch(next);

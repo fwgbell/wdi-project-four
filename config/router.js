@@ -49,4 +49,7 @@ router.route('/messages')
 router.route('/messages/:id')
   .delete(secureRoute, messages.delete);
 
+router.post('/like', secureRoute, profile.like);
+router.post('/dislike', secureRoute, profile.dislike);
+
 module.exports = router;

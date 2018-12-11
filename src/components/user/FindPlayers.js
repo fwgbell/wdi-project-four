@@ -6,7 +6,11 @@ import { authorizationHeader, decodeToken } from '../../lib/auth';
 class FindPlayers extends React.Component {
   constructor(props){
     super(props);
-    this.state={};
+    this.state={
+      index: 0
+    };
+    this.like = this.like.bind(this);
+    this.dislike = this.dislike.bind(this);
   }
 
   sortUsers(){
@@ -14,8 +18,19 @@ class FindPlayers extends React.Component {
     const index = users.findIndex(function(user){
       return user._id === decodeToken().sub;
     });
-    const currentUser = users.splice(index, 1);
-    console.log(currentUser);
+    const currentUser = users.splice(index, 1)[0];
+    const filtered = users.filter(function(user){
+      return !currentUser.likes.includes(user._id) || !currentUser.dislikes.includes(user._id);
+    });
+    this.setState({ users: filtered, profile: filtered[this.state.index] });
+  }
+
+  like(){
+    console.log('liked!', this.state.profile);
+  }
+
+  dislike(){
+    console.log('dislike :(', this.state.profile);
   }
 
   componentDidMount(){
@@ -36,8 +51,8 @@ class FindPlayers extends React.Component {
               <div className="profileEmblems">
                 <img className="profileLogo" src={profile.clubLogo}/>
                 <div className="profileButtons">
-                  <button className="button">🤢</button>
-                  <button className="button">❤️</button>
+                  <button onClick={this.dislike} className="button">🤢</button>
+                  <button onClick={this.like} className="button">❤️</button>
                 </div>
               </div>
               <img className="profilePicture" src={profile.profilePicture}/>
