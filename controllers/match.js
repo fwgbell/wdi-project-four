@@ -53,6 +53,10 @@ function rateRoute(req, res, next){
     .then( Match
       .findById(req.body.match)
       .populate('hostedBy pitch attending')
+      .then(match =>{
+        match.hasRated.push(req.currentUser._id);
+        return match.save();
+      })
       .then(match => res.json(match))
       .catch(next)
     );

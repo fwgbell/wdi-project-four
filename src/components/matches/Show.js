@@ -82,6 +82,18 @@ class MatchShow extends React.Component{
 
   render(){
     const match = this.state.match;
+    let canRate = false;
+    function findIdMatch(player){
+      return player._id === decodeToken().sub;
+    }
+    if(match){
+      if(match.hostedBy._id === decodeToken().sub && !match.hasRated.includes(match.hostedBy._id)){
+        canRate = true;
+      }
+      if(match.attending.findIndex(findIdMatch) !== -1 && !match.hasRated.includes(decodeToken().sub)){
+        canRate = true;
+      }
+    }
     return (
       <div className="matchShow">
         {match ?
@@ -145,6 +157,7 @@ class MatchShow extends React.Component{
                   )}
                 </div>
               }
+              {canRate &&
               <form onSubmit={this.handleSubmit}>
                 {match.hostedBy._id !== decodeToken().sub &&
                     <div>
@@ -189,7 +202,7 @@ class MatchShow extends React.Component{
                   )
                 }
                 <button className="button is-rounded">Submit</button>
-              </form>
+              </form>}
             </div>
           :
           <div>Loading...</div>
