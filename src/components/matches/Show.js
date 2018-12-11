@@ -118,21 +118,19 @@ class MatchShow extends React.Component{
                     <button onClick={this.leaveMatch}>Leave</button>
                   }
                 </div>}
-              {match.attending.length > 0 &&
-                <div>
-                  <h2 className="title is-2">Match Lineup:</h2>
-                  <div className="matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
-                    <img src={match.hostedBy.profilePicture}/>
-                    <h3>{match.hostedBy.username}</h3>
+              <div>
+                <h2 className="title is-2">Match Lineup:</h2>
+                <div className="matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
+                  <img src={match.hostedBy.profilePicture}/>
+                  <h3>{match.hostedBy.username}</h3>
+                </Link></div>
+                {match.attending.map(player =>
+                  <div className="matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
+                    <img src={player.profilePicture} />
+                    <h3>{player.username}</h3>
                   </Link></div>
-                  {match.attending.map(player =>
-                    <div className="matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
-                      <img src={player.profilePicture} />
-                      <h3>{player.username}</h3>
-                    </Link></div>
-                  )}
-                </div>
-              }
+                )}
+              </div>
             </div>
             :
             <div>

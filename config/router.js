@@ -4,6 +4,7 @@ const auth = require('../controllers/auth');
 const profile = require('../controllers/profile');
 const pitchReviews = require('../controllers/pitchReviews');
 const match = require('../controllers/match');
+const messages = require('../controllers/messages');
 const secureRoute = require('../lib/secureRoute');
 
 
@@ -38,5 +39,12 @@ router.route('/matches/:id')
   .delete(secureRoute, match.delete);
 
 router.post('/match/rating', secureRoute, match.rate);
+
+router.route('/messages')
+  .get(secureRoute, messages.index)
+  .post(secureRoute, messages.create);
+
+router.route('/messages/:id')
+  .delete(secureRoute, messages.delete);
 
 module.exports = router;
