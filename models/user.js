@@ -23,7 +23,8 @@ const userSchema = new mongoose.Schema({
   country: String,
   skillRating: [Number],
   hostRating: [Number],
-  chillRating: [Number]
+  chillRating: [Number],
+  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
 userSchema.methods.validatePassword = function validatePassword(password){
@@ -120,6 +121,30 @@ userSchema.virtual('hosting', {
   foreignField: 'hostedBy'
 });
 
+userSchema.virtual('averageSkill')
+  .get(function() {
+    const avg = this.skillRating.reduce((sum, rating) => {
+      return sum + rating;
+    }, 0) / this.skillRating.length;
+
+    return avg.toFixed(1);
+  });
+userSchema.virtual('averageChill')
+  .get(function() {
+    const avg = this.chillRating.reduce((sum, rating) => {
+      return sum + rating;
+    }, 0) / this.chillRating.length;
+
+    return avg.toFixed(1);
+  });
+userSchema.virtual('averageHost')
+  .get(function() {
+    const avg = this.hostRating.reduce((sum, rating) => {
+      return sum + rating;
+    }, 0) / this.hostRating.length;
+
+    return avg.toFixed(1);
+  });
 
 
 userSchema.set('toJSON', { virtuals: true });
