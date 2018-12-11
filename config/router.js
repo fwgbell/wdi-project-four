@@ -51,5 +51,6 @@ router.route('/messages/:id')
 
 router.post('/like', secureRoute, profile.like);
 router.post('/dislike', secureRoute, profile.dislike);
+router.post('/likedEachother', secureRoute, profile.match);
 
 module.exports = router;

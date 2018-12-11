@@ -27,8 +27,8 @@ function Conversation({ userId, messages, newThread, users, handleChange }) {
         </div>
       </div>}
       {filtered && filtered.map(message =>
-        message.from._id === decodeToken().sub ?
-          <div key={message._id} className="fromUser">
+        message.matchMessage?
+          <div key={message._id} className="matchMessage">
             <p>
               {message.content}
               <br />
@@ -36,14 +36,23 @@ function Conversation({ userId, messages, newThread, users, handleChange }) {
             </p>
           </div>
           :
-          <div key={message._id} className="toUser">
-            <p>
-              <strong>{message.from.username} </strong>
-              {message.content}
-              <br />
-              <small>{moment(message.createdAt).fromNow()}</small>
-            </p>
-          </div>
+          message.from._id === decodeToken().sub ?
+            <div key={message._id} className="fromUser">
+              <p>
+                {message.content}
+                <br />
+                <small>{moment(message.createdAt).fromNow()}</small>
+              </p>
+            </div>
+            :
+            <div key={message._id} className="toUser">
+              <p>
+                <strong>{message.from.username} </strong>
+                {message.content}
+                <br />
+                <small>{moment(message.createdAt).fromNow()}</small>
+              </p>
+            </div>
       )}
     </div>
   );

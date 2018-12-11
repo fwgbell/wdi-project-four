@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { authorizationHeader, decodeToken } from '../../lib/auth';
 
@@ -33,13 +33,11 @@ class FindPlayers extends React.Component {
 
   like(){
     console.log('liked!', this.state.profile);
-    //check for match
     if(this.state.profile.likes.includes(decodeToken().sub)){
-      console.log('MATCH');
       const sendObject = {
         _id: this.state.profile._id
       };
-      axios.post('/api/like', sendObject, authorizationHeader())
+      axios.post('/api/likedEachother', sendObject, authorizationHeader())
         .then(result => this.setState({ match: this.state.profile, liked: sendObject._id, users: result.data }, this.sortUsers));
     } else{
       const sendObject = {
@@ -76,7 +74,7 @@ class FindPlayers extends React.Component {
         <div className="findPage">
           {match && <div className="matchWrapper">
             <h1>You matched {match.username}</h1>
-            <h2>Send your new match a message <i className="far fa-comments"></i></h2>
+            <h2><Link to={'/messages'}>Send your new match a message <i className="far fa-comments"></i></Link></h2>
             <h2>Or ...</h2>
             <h2 onClick={this.carryOnSwiping}>Carry on swiping <i className="fas fa-times-circle"></i></h2>
             <img src={match.profilePicture} />
@@ -101,16 +99,20 @@ class FindPlayers extends React.Component {
           </div>
         </div>
         :
-        <div className="findPage">
+
+        match?
+          <div className="findPage">
+            <div className="matchWrapper">
+              <h1>You matched {match.username}</h1>
+              <h2><Link to={'/messages'}>Send your new match a message <i className="far fa-comments"></i></Link></h2>
+              <h2>Or ...</h2>
+              <h2 onClick={this.carryOnSwiping}>Carry on swiping<i className="fas fa-times-circle"></i></h2>
+              <img src={match.profilePicture} />
+            </div>
+          </div>
+          :
           <h1 className="noMore">No more players in your area, check back soon. <br/> <i className="fas fa-sad-cry"></i></h1>
-          {match && <div className="matchWrapper">
-            <h1>You matched {match.username}</h1>
-            <h2>Send your new match a message <i className="far fa-comments"></i></h2>
-            <h2>Or ...</h2>
-            <h2 onClick={this.carryOnSwiping}>Carry on swiping<i className="fas fa-times-circle"></i></h2>
-            <img src={match.profilePicture} />
-          </div>}
-        </div>
+
     );
   }
 }
