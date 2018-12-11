@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { authorizationHeader } from '../../lib/auth';
+import { authorizationHeader, decodeToken } from '../../lib/auth';
 
 class FindPlayers extends React.Component {
   constructor(props){
@@ -9,18 +9,24 @@ class FindPlayers extends React.Component {
     this.state={};
   }
 
+  sortUsers(){
+    const users = this.state.users;
+    const index = users.findIndex(function(user){
+      return user._id === decodeToken().sub;
+    });
+    const currentUser = users.splice(index, 1);
+    console.log(currentUser);
+  }
+
   componentDidMount(){
     axios.get('/api/users', authorizationHeader())
-      .then(result => this.setState({ users: result.data}));
+      .then(result => this.setState({ users: result.data}, this.sortUsers));
   }
 
   render(){
-    let profile;
-    if(this.state.users){
-      profile = this.state.users[0];
-    }
+    const profile = this.state.profile;
     return (
-      this.state.users?
+      profile?
         <div className="findPage">
           <div className="fifaCard">
             <div className="cardHead">

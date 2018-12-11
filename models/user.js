@@ -24,7 +24,8 @@ const userSchema = new mongoose.Schema({
   skillRating: [Number],
   hostRating: [Number],
   chillRating: [Number],
-  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  dislikes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
 userSchema.methods.validatePassword = function validatePassword(password){
