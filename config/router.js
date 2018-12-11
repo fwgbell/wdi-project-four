@@ -37,5 +37,6 @@ router.route('/matches/:id')
   .put(secureRoute, match.update)
   .delete(secureRoute, match.delete);
 
+router.post('/match/rating', secureRoute, match.rate);
 
 module.exports = router;

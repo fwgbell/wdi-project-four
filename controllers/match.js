@@ -1,4 +1,5 @@
 const Match = require('../models/match');
+const User = require('../models/user');
 
 function showRoute(req, res, next){
   Match
@@ -37,9 +38,29 @@ function deleteRoute(req, res, next){
     .catch(next);
 }
 
+function rateRoute(req, res, next){
+  console.log(req.body);
+  const ratings = req.body.ratings;
+  Promise.all(ratings.map(rating => {
+    User
+      .findById(rating._id)
+      .then(user => {
+        Object.assign(user, rating);
+        return user.save();
+      });
+  }))
+    .then( Match
+      .findById(req.body.match)
+      .populate('hostedBy pitch attending')
+      .then(match => res.json(match))
+      .catch(next)
+    );
+}
+
 module.exports = {
   show: showRoute,
   create: createRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  rate: rateRoute
 };

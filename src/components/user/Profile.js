@@ -28,6 +28,7 @@ class Profile extends React.Component {
 
   render(){
     const profile = this.state.profile;
+    console.log(profile);
     let allMatches;
     const history = [];
     const upcoming = [];

@@ -12,7 +12,6 @@ class MatchShow extends React.Component{
     this.attendMatch = this.attendMatch.bind(this);
     this.leaveMatch = this.leaveMatch.bind(this);
     this.cancelMatch = this.cancelMatch.bind(this);
-    this.beginRating = this.beginRating.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -37,10 +36,6 @@ class MatchShow extends React.Component{
       .then( () => this.props.history.push('/pitches'));
   }
 
-  beginRating(){
-    this.setState({ isRating: true });
-  }
-
   handleChange({ target: { name, value }}){
     this.setState({ [name]: value });
   }
@@ -58,26 +53,26 @@ class MatchShow extends React.Component{
     if(data.hostHostRating){
       const hostObject = {
         _id: data.match.hostedBy._id,
-        host: data.hostHostRating,
-        chill: data.hostChillRating,
-        skill: data.hostSkillRating
+        hostRating: data.hostHostRating,
+        chillRating: data.hostChillRating,
+        skillRating: data.hostSkillRating
       };
       sendObject.ratings.push(hostObject);
-      delete data.match;
       delete data.hostHostRating;
       delete data.hostChillRating;
       delete data.hostSkillRating;
     }
-    for(let i = 0; i < (Object.keys(data).length / 3); i++){
+    delete data.match;
+    for(let i = 0; i < Object.keys(data).length; i = i + 3){
       const playerObject = {
-        chill: data[Object.keys(data)[i]],
-        skill: data[Object.keys(data)[i + 1]],
+        chillRating: data[Object.keys(data)[i]],
+        skillRating: data[Object.keys(data)[i + 1]],
         _id: data[Object.keys(data)[i + 2]]
       };
       sendObject.ratings.push(playerObject);
     }
     console.log(sendObject);
-    axios.post('/api/matchRating', authorizationHeader())
+    axios.post('/api/match/rating', sendObject, authorizationHeader())
       .then(result => this.setState({ match: result.data }));
   }
 
