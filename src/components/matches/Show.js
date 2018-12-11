@@ -86,6 +86,7 @@ class MatchShow extends React.Component{
     function findIdMatch(player){
       return player._id === decodeToken().sub;
     }
+
     if(match){
       if(match.hostedBy._id === decodeToken().sub && !match.hasRated.includes(match.hostedBy._id)){
         canRate = true;
@@ -94,6 +95,7 @@ class MatchShow extends React.Component{
         canRate = true;
       }
     }
+
     return (
       <div className="matchShow">
         {match ?
@@ -182,21 +184,24 @@ class MatchShow extends React.Component{
                 }
                 {
                   match.attending.map((player) =>
-                    <div key={player._id}>
-                      <h2>{ player.username}</h2>
-                      <div className="field">
-                        <label className="label">Chill Rating</label>
-                        <div className="control">
-                          <input onChange={this.handleChange} value={this.state[(player.username + 'ChillRating')] || ''} name={`${player.username}ChillRating`} className="input" type="number" min="1" max="5" required/>
+                    player._id === decodeToken().sub ?
+                      <p key={player._id}></p>
+                      :
+                      <div key={player._id}>
+                        <h2>{ player.username}</h2>
+                        <div className="field">
+                          <label className="label">Chill Rating</label>
+                          <div className="control">
+                            <input onChange={this.handleChange} value={this.state[(player.username + 'ChillRating')] || ''} name={`${player.username}ChillRating`} className="input" type="number" min="1" max="5" required/>
+                          </div>
+                        </div>
+                        <div className="field">
+                          <label className="label">Skill Rating</label>
+                          <div className="control">
+                            <input onChange={this.handleChange} value={this.state[(player.username + 'SkillRating')] || ''} name={`${player.username}SkillRating`} className="input" type="number" min="1" max="5" required/>
+                          </div>
                         </div>
                       </div>
-                      <div className="field">
-                        <label className="label">Skill Rating</label>
-                        <div className="control">
-                          <input onChange={this.handleChange} value={this.state[(player.username + 'SkillRating')] || ''} name={`${player.username}SkillRating`} className="input" type="number" min="1" max="5" required/>
-                        </div>
-                      </div>
-                    </div>
                   )
                 }
                 <button className="button is-rounded">Submit</button>
