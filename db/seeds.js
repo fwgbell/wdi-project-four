@@ -4,6 +4,7 @@ const { dbURI } = require('../config/environment');
 const Pitch = require('../models/pitch');
 const User = require('../models/user');
 const Match = require('../models/match');
+const Message = require('../models/message');
 
 const userIds = [
   '5bf17051d4a071297aa4b6ea',
@@ -53,6 +54,25 @@ const matchData = [{
   pitch: pitchIds[0]
 }];
 
+const messageData = [
+  {
+    from: userIds[0],
+    to: userIds[1],
+    content: 'Hello Joe!'
+  }, {
+    from: userIds[1],
+    to: userIds[0],
+    content: 'New phone who dis?'
+  }, {
+    from: userIds[0],
+    to: userIds[1],
+    content: 'Messages are working!!'
+  }, {
+    from: userIds[1],
+    to: userIds[2],
+    content: 'Hi Rob! How\'s life?'
+  }
+];
 
 mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase();
@@ -99,9 +119,14 @@ mongoose.connect(dbURI, (err, db) => {
             .create(matchData)
             .then(matches => {
               console.log(`${matches.length} matches created`);
-            })
-            .catch(err => console.log(err))
-            .finally(() => mongoose.connection.close());
+              Message
+                .create(messageData)
+                .then(messages => {
+                  console.log(`${messages.length} messages created`);
+                })
+                .catch(err => console.log(err))
+                .finally(() => mongoose.connection.close());
+            });
         });
     });
 });

@@ -155,7 +155,7 @@ class MatchShow extends React.Component{
                   )}
                 </div>
               }
-              {canRate &&
+              {canRate && match.attending.length > 0 &&
               <form onSubmit={this.handleSubmit}>
                 {match.hostedBy._id !== decodeToken().sub &&
                     <div>
