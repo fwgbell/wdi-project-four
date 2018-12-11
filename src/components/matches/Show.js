@@ -8,15 +8,13 @@ import moment from 'moment';
 class MatchShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      isRating: false
-    };
+    this.state = {};
     this.attendMatch = this.attendMatch.bind(this);
     this.leaveMatch = this.leaveMatch.bind(this);
     this.cancelMatch = this.cancelMatch.bind(this);
     this.beginRating = this.beginRating.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   attendMatch(){
@@ -44,8 +42,43 @@ class MatchShow extends React.Component{
   }
 
   handleChange({ target: { name, value }}){
-    console.log(this.state);
     this.setState({ [name]: value });
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    const data = this.state;
+    const sendObject = {
+      ratings: [],
+      match: data.match._id
+    };
+    data.match.attending.forEach(function(player){
+      data[(player.username + 'iD')] = player._id;
+    });
+    if(data.hostHostRating){
+      const hostObject = {
+        _id: data.match.hostedBy._id,
+        host: data.hostHostRating,
+        chill: data.hostChillRating,
+        skill: data.hostSkillRating
+      };
+      sendObject.ratings.push(hostObject);
+      delete data.match;
+      delete data.hostHostRating;
+      delete data.hostChillRating;
+      delete data.hostSkillRating;
+    }
+    for(let i = 0; i < (Object.keys(data).length / 3); i++){
+      const playerObject = {
+        chill: data[Object.keys(data)[i]],
+        skill: data[Object.keys(data)[i + 1]],
+        _id: data[Object.keys(data)[i + 2]]
+      };
+      sendObject.ratings.push(playerObject);
+    }
+    console.log(sendObject);
+    axios.post('/api/matchRating', authorizationHeader())
+      .then(result => this.setState({ match: result.data }));
   }
 
   componentDidMount() {
@@ -109,30 +142,17 @@ class MatchShow extends React.Component{
                   <div className="column is-4 matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
                     <img src={match.hostedBy.profilePicture}/>
                     <h3>{match.hostedBy.username}</h3></Link>
-                  {
-                    match.hostedBy._id !== decodeToken().sub && !match.hasRated.includes(decodeToken().sub)?
-                      <button onClick={this.beginRating}>rate your host</button>
-                      :
-                      <p>yo</p>
-                  }
                   </div>
                   {match.attending.map(player =>
                     <div className="column is-4 matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
                       <img src={player.profilePicture} />
                       <h3>{player.username}</h3></Link>
-                    {
-                      player._id !== decodeToken().sub && !match.hasRated.includes(decodeToken().sub)?
-                        <button>rate this player</button>
-                        :
-                        <p>yo</p>
-                    }
                     </div>
                   )}
                 </div>
               }
-              {this.state.isRating &&
-                <form>
-                  {match.hostedBy._id !== decodeToken().sub &&
+              <form onSubmit={this.handleSubmit}>
+                {match.hostedBy._id !== decodeToken().sub &&
                     <div>
                       <h2>{ match.hostedBy.username}</h2>
                       <div className="field">
@@ -154,29 +174,28 @@ class MatchShow extends React.Component{
                         </div>
                       </div>
                     </div>
-                  }
-                  {
-                    match.attending.map(player =>
-                      <div key={player._id}>
-                        <h2>{ player.username}</h2>
-                        <div className="field">
-                          <label className="label">Chill Rating</label>
-                          <div className="control">
-                            <input onChange={this.handleChange} value={this.state[(player.username + 'ChillRating')] || ''} name={`${player.username}ChillRating`} className="input" type="number" min="1" max="5" required/>
-                          </div>
-                        </div>
-                        <div className="field">
-                          <label className="label">Skill Rating</label>
-                          <div className="control">
-                            <input onChange={this.handleChange} value={this.state[(player.username + 'SkillRating')] || ''} name={`${player.username}SkillRating`} className="input" type="number" min="1" max="5" required/>
-                          </div>
+                }
+                {
+                  match.attending.map((player) =>
+                    <div key={player._id}>
+                      <h2>{ player.username}</h2>
+                      <div className="field">
+                        <label className="label">Chill Rating</label>
+                        <div className="control">
+                          <input onChange={this.handleChange} value={this.state[(player.username + 'ChillRating')] || ''} name={`${player.username}ChillRating`} className="input" type="number" min="1" max="5" required/>
                         </div>
                       </div>
-                    )
-                  }
-                  <button className="button is-rounded">Submit</button>
-                </form>
-              }
+                      <div className="field">
+                        <label className="label">Skill Rating</label>
+                        <div className="control">
+                          <input onChange={this.handleChange} value={this.state[(player.username + 'SkillRating')] || ''} name={`${player.username}SkillRating`} className="input" type="number" min="1" max="5" required/>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+                <button className="button is-rounded">Submit</button>
+              </form>
             </div>
           :
           <div>Loading...</div>
