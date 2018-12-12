@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const Message = require('../models/message');
 
-function profileIndexrRoute(req, res, next){
+function profileIndexRoute(req, res, next){
   User
     .find()
     .then(users => res.json(users))
@@ -76,7 +76,7 @@ function matchProfile(req, res, next){
 }
 
 module.exports = {
-  index: profileIndexrRoute,
+  index: profileIndexRoute,
   show: profileShowRoute,
   update: profileUpdateRouote,
   like: likeProfile,
