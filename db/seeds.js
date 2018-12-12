@@ -64,6 +64,13 @@ const matchData = [{
   endTime: 'Tue Dec 11 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Kick-About',
   pitch: pitchIds[0]
+}, {
+  hostedBy: userIds[1],
+  time: 'Sat Dec 15 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
+  endTime: 'Sat Dec 15 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
+  type: 'Baby',
+  pitch: pitchIds[0],
+  attending: [userIds[0], userIds[2]]
 }];
 
 const messageData = [
@@ -95,12 +102,12 @@ mongoose.connect(dbURI, (err, db) => {
     reviews: [{
       title: 'My ends till I die',
       reviewedBy: userIds[0],
-      rating: 4,
+      rating: 5,
       content: 'This pitch is great, good surface quality and the walls keep the ball in play for a fast game!'
     }, {
       title: 'Where ballers are forged',
       reviewedBy: userIds[1],
-      rating: 1,
+      rating: 4,
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     }]
   }, {
@@ -113,7 +120,31 @@ mongoose.connect(dbURI, (err, db) => {
     reviews: [{
       title: 'Too good 😤',
       reviewedBy: userIds[0],
-      rating: 5,
+      rating: 4,
+      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    }]
+  }, {
+    uploadedBy: userIds[1],
+    name: 'Berner Pitch',
+    lat: 51.512483,
+    lng: -0.063817,
+    image: 'https://savethepitch.files.wordpress.com/2017/02/milkwood-community-park.jpg',
+    reviews: [{
+      title: 'Too good 😤',
+      reviewedBy: userIds[0],
+      rating: 2,
+      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    }]
+  }, {
+    uploadedBy: userIds[1],
+    name: 'Power League Shoreditch',
+    lat: 51.523389,
+    lng: -0.074862,
+    image: 'https://www.dura-sport.co.uk/assets/js/tinymce/plugins/moxiemanager/data/files/IMAGES%20-%20FOOTBALL/FOOTBALL%20CASE%20STUDIES/Lucozade%20Canary%20Wharf/Lucozade2%20-%20done.jpg',
+    reviews: [{
+      title: 'Absolute rip off!! 🤬',
+      reviewedBy: userIds[0],
+      rating: 1,
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     }]
   }])

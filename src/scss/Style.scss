@@ -145,7 +145,7 @@ main{
     img{
       width: 95%;
       height: 95%;
-      max-height: 500px;
+      max-height: 350px;
     }
   }
   @media only screen and (max-width: 800px) {
@@ -389,12 +389,301 @@ main{
     }
   }
   .profileFixtures{
+    padding: 0;
     text-align: center;
-    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    @media only screen and (max-width: 800px) {
+      padding-bottom: 40px;
+    }
+    .fixtureStripe{
+      height: 100%;
+      width: 80%;
+      padding: 40px;
+      overflow-y: scroll;
+      @media only screen and (max-width: 800px) {
+        padding: 10px;
+      }
+      h2{
+        font-size: 35px;
+        font-weight: bold;
+      }
+      h3{
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      a{
+        font-size: 20px;
+      }
+    }
   }
+  // club themes------------------------------------------------
+  .Leicester-City{
+    background-color: #003090;
+    .fixtureStripe{
+      background-color: white;
+      color: #FDBE11;
+      a{
+        color: #FDBE11;
+      }
+      hr{
+        background-color: #FDBE11;
+      }
+    }
+  }
+  .Arsenal{
+    background-color: #EF0107;
+    .fixtureStripe{
+      background-color: #063672;
+      color: #9C824A;
+      a{
+        color: #9C824A;
+      }
+      hr{
+        background-color: #9C824A;
+      }
+    }
+  }
+  .AFC-Bournemouth{
+    background-color: #DA291C;
+    .fixtureStripe{
+      background-color: black;
+      color: #A89968;
+      a{
+        color: #A89968;
+      }
+      hr{
+        background-color: #A89968;
+      }
+    }
+  }
+  .Brighton--Hove-Albion{
+    background-color: #0057B8;
+    .fixtureStripe{
+      background-color: white;
+      color: #FFCD00;
+      a{
+        color: #FFCD00;
+      }
+      hr{
+        background-color: #FFCD00;
+      }
+    }
+  }
+  .Burnley{
+    background-color: #6C1D45;
+    .fixtureStripe{
+      background-color: #99D6EA;
+      color: #F0B323;
+      a{
+        color: #F0B323;
+      }
+      hr{
+        background-color: #F0B323;
+      }
+    }
+  }
+  .Cardiff-City{
+    background-color: #005995;
+    .fixtureStripe{
+      background-color: white;
+      color: #0070B5;
+      a{
+        color: #0070B5;
+      }
+      hr{
+        background-color: #0070B5;
+      }
+    }
+  }
+  .Crystal-Palace{
+    background-color: #FF0D4B;
+    .fixtureStripe{
+      background-color: #008AFF;
+      color: #FDFA04;
+      a{
+        color: #FDFA04;
+      }
+      hr{
+        background-color: #FDFA04;
+      }
+    }
+  }
+  .Everton{
+    background-color: #003399;
+    .fixtureStripe{
+      background-color: white;
+      color: #003399;
+      a{
+        color: #003399;
+      }
+      hr{
+        background-color: #003399;
+      }
+    }
+  }
+  .Fulham{
+    background-color: white;
+    border: 5px solid black;
+    .fixtureStripe{
+      background-color: black;
+      color: white;
+      a{
+        color: white;
+      }
+      hr{
+        background-color: white;
+      }
+    }
+  }
+  .Huddersfield-Town{
+    background-color: #0E63AD;
+    .fixtureStripe{
+      background-color: white;
+      color: #0E63AD;
+      a{
+        color: #0E63AD;
+      }
+      hr{
+        background-color: #0E63AD;
+      }
+    }
+  }
+  .Liverpool{
+    background-color: #C8102E;
+    .fixtureStripe{
+      background-color: white;
+      color: #00B2A9;
+      a{
+        color: #00B2A9;
+      }
+      hr{
+        background-color: #00B2A9;
+      }
+    }
+  }
+  .Manchester-City{
+    background-color: #6CABDD;
+    .fixtureStripe{
+      background-color: white;
+      color: #FFC659;
+      a{
+        color: #FFC659;
+      }
+      hr{
+        background-color: #FFC659;
+      }
+    }
+  }
+  .Manchester-United{
+    background-color: #DA291C;
+    .fixtureStripe{
+      background-color: black;
+      color: #EEBF60;
+      a{
+        color: #EEBF60;
+      }
+      hr{
+        background-color: #EEBF60;
+      }
+    }
+  }
+  .Newcastle-United{
+    background-color: #241F20;
+    border: 5px solid #241F20;
+    .fixtureStripe{
+      background-color: white;
+      color: #F1BE48;
+      a{
+        color: #F1BE48;
+      }
+      hr{
+        background-color: #F1BE48;
+      }
+    }
+  }
+  .Southampton{
+    background-color: #D71920;
+    .fixtureStripe{
+      background-color: white;
+      color: #D71920;
+      a{
+        color: #D71920;
+      }
+      hr{
+        background-color: #D71920;
+      }
+    }
+  }
+  .Tottenham-Hotspur{
+    background-color: white;
+    border: 5px solid #132257;
+    .fixtureStripe{
+      background-color: white;
+      color: #132257;
+      a{
+        color: #132257;
+      }
+      hr{
+        background-color: #132257;
+      }
+    }
+  }
+  .Watford{
+    background-color: #FBEE23;
+    .fixtureStripe{
+      background-color: black;
+      color: #ED2127;
+      a{
+        color: #ED2127;
+      }
+      hr{
+        background-color: #ED2127;
+      }
+    }
+  }
+  .West-Ham-United{
+    background-color: #7A263A;
+    .fixtureStripe{
+      background-color: #1BB1E7;
+      color: white;
+      a{
+        color: white;
+      }
+      hr{
+        background-color: white;
+      }
+    }
+  }
+  .Wolverhampton{
+    background-color: #FFBC00;
+    border: 5px solid black;
+    .fixtureStripe{
+      background-color: black;
+      color: #FFBC00;
+      a{
+        color: #FFBC00;
+      }
+      hr{
+        background-color: #FFBC00;
+      }
+    }
+  }
+  .NONE-OF-THE-ABOVE{
+    background-color: steelblue;
+    .fixtureStripe{
+      background-color: hotpink;
+      color: papayawhip;
+      a{
+        color: papayawhip;
+      }
+      hr{
+        background-color: papayawhip;
+      }
+    }
+  }
+  //---------------------------------------------------
 }
-
-
 .matchShow{
   .matchPlayer{
     border: 1px solid black;

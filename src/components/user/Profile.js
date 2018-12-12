@@ -49,7 +49,7 @@ class Profile extends React.Component {
       <div className="profilePage">
         {profile
           ?
-          <div className="columns">
+          <div className={`columns ${profile.club.replace('&', '').split(' ').join('-')}`}>
             <div className="column">
               <div className="fifaCard">
                 <div className="cardHead">
@@ -68,19 +68,22 @@ class Profile extends React.Component {
               </div>
             </div>
             <div className="column profileFixtures">
-              <h2 className="title is-2">{`${profile.username}'s fixtures`}</h2>
-              <h3 className="subtitle is-4">Upcoming Matches</h3>
-              {upcoming && upcoming.map(match =>
-                <div key={match._id}>
-                  <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
-                </div>
-              )}
-              <h3 className="subtitle is-4">Match History</h3>
-              {history && history.map(match =>
-                <div key={match._id}>
-                  <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
-                </div>
-              )}
+              <div className="fixtureStripe">
+                <h2>{`${profile.username}'s fixtures`}</h2>
+                <h3 >Upcoming Matches</h3>
+                {upcoming && upcoming.map(match =>
+                  <div key={match._id}>
+                    <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
+                  </div>
+                )}
+                <hr />
+                <h3>Match History</h3>
+                {history && history.map(match =>
+                  <div key={match._id}>
+                    <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           :
