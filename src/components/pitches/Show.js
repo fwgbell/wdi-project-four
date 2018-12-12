@@ -170,8 +170,9 @@ class PitchShow extends React.Component {
                   </div>
                   <div className="field">
                     <label className="label">Score</label>
-                    <div className="control">
-                      <input type="range" min="1" max="5" onChange={this.handleChange} value={this.state.rating || ''} name="rating" />
+                    <div className="control sliderControl">
+                      <input className="slider" type="range" min="1" max="5" onChange={this.handleChange} value={this.state.rating || ''} name="rating" />
+                      <p>{this.state.rating}</p>
                     </div>
                   </div>
                   <div className="field">

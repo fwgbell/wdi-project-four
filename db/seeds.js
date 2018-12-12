@@ -56,6 +56,22 @@ const userData = [{
   skillRating: [3],
   hostRating: [5]
 
+}, {
+  _id: userIds[3],
+  username: 'Dezzza',
+  email: 'i@i',
+  password: 'pass',
+  profilePicture: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/20769942_10211283715181481_1745424953888526791_n.jpg?_nc_cat=100&_nc_ht=scontent-lhr3-1.xx&oh=cdaf6f7b5ede87d4d91252a1dc40f0a4&oe=5C94FBC9',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
+  role1: 'Striker',
+  role2: 'Top Man',
+  club: 'Chelsea',
+  country: 'United States',
+  likes: [userIds[0]],
+  chillRating: [5],
+  skillRating: [1],
+  hostRating: [5]
+
 }];
 
 const matchData = [{
@@ -64,9 +80,9 @@ const matchData = [{
   endTime: 'Mon Dec 10 2018 13:45:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Kick-About',
   pitch: pitchIds[0],
-  attending: [userIds[0]]
+  attending: [userIds[0], userIds[2], userIds[3]]
 }, {
-  hostedBy: userIds[0],
+  hostedBy: userIds[2],
   time: 'Tue Dec 11 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
   endTime: 'Tue Dec 11 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Kick-About',
@@ -77,7 +93,7 @@ const matchData = [{
   endTime: 'Sat Dec 15 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Baby',
   pitch: pitchIds[0],
-  attending: [userIds[0], userIds[2]]
+  attending: [userIds[0], userIds[2], userIds[3]]
 }];
 
 const messageData = [

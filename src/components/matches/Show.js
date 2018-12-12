@@ -101,33 +101,35 @@ class MatchShow extends React.Component{
         {match ?
           Date.parse(match.endTime) > new Date() ?
             <div>
-              <h1>{match.type}</h1>
-              <h1>Host: <Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></h1>
-              <h2>Pitch: <Link to={`/pitches/${match.pitch._id}`}>{match.pitch.name}</Link></h2>
-              <p>Match Day: {moment(match.time).format('dddd Do MMMM')}</p>
-              <p>Kick-Off: {moment(match.time).format('h:m a')}</p>
-              <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
+              <div className="matchInfoWrapper">
+                <h1>{match.type}</h1>
+                <h2>Host: <Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></h2>
+                <h2>Pitch: <Link to={`/pitches/${match.pitch._id}`}>{match.pitch.name}</Link></h2>
+                <h2>Match Day: {moment(match.time).format('dddd Do MMMM')}</h2>
+                <h2>Kick-Off: {moment(match.time).format('h:m a')}</h2>
+                <h2>Final Whistle: {moment(match.endTime).format('h:m a')}</h2>
+              </div>
               {match.hostedBy._id === decodeToken().sub ?
                 <div>
-                  <button onClick={this.cancelMatch}>Call Off Match</button>
+                  <button className="button is-rounded" onClick={this.cancelMatch}>Call Off Match</button>
                   <Link to={`/matches/${this.props.match.params.id}/edit`}><button>Edit Match</button></Link>
                 </div>
                 :
                 <div>
                   {!match.attending.find(player => player._id === decodeToken().sub) ?
-                    <button onClick={this.attendMatch}>Attend</button>
+                    <button className="button is-rounded" onClick={this.attendMatch}>Attend</button>
                     :
-                    <button onClick={this.leaveMatch}>Leave</button>
+                    <button className="button is-rounded" onClick={this.leaveMatch}>Leave</button>
                   }
                 </div>}
-              <div>
-                <h2 className="title is-2">Match Lineup:</h2>
-                <div className="matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
+              <div className="columns is-multiline">
+                <h2 className="column is-12 title is-2">Match Lineup:</h2>
+                <div className="column is-4 matchPlayer"><Link to={`/profile/${match.hostedBy._id}`}>
                   <img src={match.hostedBy.profilePicture}/>
                   <h3>{match.hostedBy.username}</h3>
                 </Link></div>
                 {match.attending.map(player =>
-                  <div className="matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
+                  <div className="column is-4 matchPlayer" key={player._id}><Link to={`/profile/${player._id}`}>
                     <img src={player.profilePicture} />
                     <h3>{player.username}</h3>
                   </Link></div>
@@ -136,12 +138,14 @@ class MatchShow extends React.Component{
             </div>
             :
             <div>
-              <h1>Match Type: {match.type}</h1>
-              <h1>Host: <Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></h1>
-              <h2>Pitch: <Link to={`/pitches/${match.pitch._id}`}>{match.pitch.name}</Link></h2>
-              <p>Match Day: {moment(match.time).format('dddd Do MMMM')}</p>
-              <p>Kicked-Off: {moment(match.time).format('h:m a')}</p>
-              <p>Final Whistle: {moment(match.endTime).format('h:m a')}</p>
+              <div className="matchInfoWrapper">
+                <h1>{match.type}</h1>
+                <h2>Host: <Link to={`/profile/${match.hostedBy._id}`}>{match.hostedBy.username}</Link></h2>
+                <h2>Pitch: <Link to={`/pitches/${match.pitch._id}`}>{match.pitch.name}</Link></h2>
+                <h2>Match Day: {moment(match.time).format('dddd Do MMMM')}</h2>
+                <h2>Kicked-Off: {moment(match.time).format('h:m a')}</h2>
+                <h2>Final Whistle: {moment(match.endTime).format('h:m a')}</h2>
+              </div>
               {match.attending.length > 0 &&
                 <div className="columns is-multiline">
                   <h2 className="column is-12 title is-2">Match Lineup:</h2>
@@ -158,26 +162,26 @@ class MatchShow extends React.Component{
                 </div>
               }
               {canRate && match.attending.length > 0 &&
-              <form onSubmit={this.handleSubmit}>
+              <form  className="columns is-multiline" onSubmit={this.handleSubmit}>
                 {match.hostedBy._id !== decodeToken().sub &&
-                    <div>
-                      <h2>{ match.hostedBy.username}</h2>
+                    <div className="column is-3">
+                      <h2>{ match.hostedBy.username} (HOST)</h2>
                       <div className="field">
-                        <label className="label">Host Rating</label>
+                        <label className="label">Host Rating {this.state.hostHostRating && '('+this.state.hostHostRating+')'}</label>
                         <div className="control">
-                          <input onChange={this.handleChange} value={this.state.hostHostRating || ''} name="hostHostRating" className="input" type="number" min="1" max="5" required/>
+                          <input onChange={this.handleChange} value={this.state.hostHostRating || ''} name="hostHostRating" className="slider" type="range" min="1" max="5" required/>
                         </div>
                       </div>
                       <div className="field">
-                        <label className="label">Chill Rating</label>
+                        <label className="label">Chill Rating {this.state.hostChillRating && '('+this.state.hostChillRating+')'}</label>
                         <div className="control">
-                          <input onChange={this.handleChange} value={this.state.hostChillRating || ''} name="hostChillRating" className="input" type="number" min="1" max="5" required/>
+                          <input onChange={this.handleChange} value={this.state.hostChillRating || ''} name="hostChillRating" className="slider" type="range" min="1" max="5" required/>
                         </div>
                       </div>
                       <div className="field">
-                        <label className="label">Skill Rating</label>
+                        <label className="label">Skill Rating {this.state.hostSkillRating && '('+this.state.hostSkillRating+')'}</label>
                         <div className="control">
-                          <input onChange={this.handleChange} value={this.state.hostSkillRating || ''} name="hostSkillRating" className="input" type="number" min="1" max="5" required/>
+                          <input onChange={this.handleChange} value={this.state.hostSkillRating || ''} name="hostSkillRating" className="slider" type="range" min="1" max="5" required/>
                         </div>
                       </div>
                     </div>
@@ -187,24 +191,24 @@ class MatchShow extends React.Component{
                     player._id === decodeToken().sub ?
                       <p key={player._id}></p>
                       :
-                      <div key={player._id}>
+                      <div className="column is-3" key={player._id}>
                         <h2>{ player.username}</h2>
                         <div className="field">
-                          <label className="label">Chill Rating</label>
+                          <label className="label">Chill Rating {this.state[(player.username + 'ChillRating')] && '('+this.state[(player.username + 'ChillRating')]+')'}</label>
                           <div className="control">
-                            <input onChange={this.handleChange} value={this.state[(player.username + 'ChillRating')] || ''} name={`${player.username}ChillRating`} className="input" type="number" min="1" max="5" required/>
+                            <input onChange={this.handleChange} value={this.state[(player.username + 'ChillRating')] || ''} name={`${player.username}ChillRating`} className="slider" type="range" min="1" max="5" required/>
                           </div>
                         </div>
                         <div className="field">
-                          <label className="label">Skill Rating</label>
+                          <label className="label">Skill Rating {this.state[(player.username + 'SkillRating')] && '('+this.state[(player.username + 'SkillRating')]+')'}</label>
                           <div className="control">
-                            <input onChange={this.handleChange} value={this.state[(player.username + 'SkillRating')] || ''} name={`${player.username}SkillRating`} className="input" type="number" min="1" max="5" required/>
+                            <input onChange={this.handleChange} value={this.state[(player.username + 'SkillRating')] || ''} name={`${player.username}SkillRating`} className="slider" type="range" min="1" max="5" required/>
                           </div>
                         </div>
                       </div>
                   )
                 }
-                <button className="button is-rounded">Submit</button>
+                <button className="ratingFormSubmit button is-rounded">Submit</button>
               </form>}
             </div>
           :

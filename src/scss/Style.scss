@@ -309,6 +309,30 @@ main{
       width: 100%;
       padding: 1rem;
       margin-bottom: 30px;
+      .sliderControl{
+        display: flex;
+        p{
+          margin-left: 10px;
+          font-size: 30px;
+          margin-top: -12px;
+        }
+        .slider{
+          -webkit-appearance: none;
+          appearance: none;
+          width: 50%;
+          margin-left: 25%;
+          height: 20px;
+          background: #d3d3d3;
+          outline: none;
+          @media only screen and (max-width: 800px) {
+            width: 100%;
+            margin-left: 0%;
+          }
+        }
+        .slider::-webkit-slider-thumb {
+          cursor: pointer;
+        }
+      }
       textarea{
         resize: vertical;
         width: 100%;
@@ -464,6 +488,7 @@ main{
       overflow-y: scroll;
       @media only screen and (max-width: 800px) {
         padding: 10px;
+        border-radius: 25px;
       }
       h2{
         font-size: 35px;
@@ -474,7 +499,7 @@ main{
         margin-bottom: 30px;
       }
       a{
-        font-size: 20px;
+        font-size: 22px;
       }
     }
   }
@@ -541,6 +566,20 @@ main{
       }
       hr{
         background-color: #F0B323;
+      }
+    }
+  }
+  .Chelsea{
+    background-color: #034694;
+    border: solid 5px #DBA111;
+    .fixtureStripe{
+      background-color: white;
+      color: #DBA111;
+      a{
+        color: #DBA111;
+      }
+      hr{
+        background-color: #DBA111;
       }
     }
   }
@@ -746,13 +785,33 @@ main{
   //---------------------------------------------------
 }
 .matchShow{
+  .matchInfoWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(34, 34, 34);
+    h1{
+      font-size: 50px;
+      font-weight: bold;
+    }
+    h2{
+      font-size: 40px;
+      a{
+        color: rgb(34, 34, 34);
+      }
+    }
+  }
   .matchPlayer{
-    border: 1px solid black;
+    border: 3px solid rgb(231, 231, 231);
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2rem;
+    background-color: rgb(34, 34, 34);
+    color: rgb(231, 231, 231);
     a{
-      color: black;
+      color: rgb(231, 231, 231);
       h3{
         text-align: center;
         font-size: 30px;
@@ -763,8 +822,13 @@ main{
         height: 7rem;
         border-radius: 100%;
         margin: 2rem;
+        border: solid rgb(231, 231, 231);
       }
     }
+  }
+  .ratingFormSubmit{
+    margin-top: 20px;
+    margin-bottom: 50px;
   }
 }
 .messagesPage{

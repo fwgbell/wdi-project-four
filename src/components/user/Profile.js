@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { authorizationHeader } from '../../lib/auth';
+import moment from 'moment';
 
 class Profile extends React.Component {
   constructor(props){
@@ -74,14 +75,14 @@ class Profile extends React.Component {
                 <h3 >Upcoming Matches</h3>
                 {upcoming && upcoming.map(match =>
                   <div key={match._id}>
-                    <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
+                    <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()} - {moment(match.time).fromNow()}</Link></h4>
                   </div>
                 )}
                 <hr />
                 <h3>Match History</h3>
                 {history && history.map(match =>
                   <div key={match._id}>
-                    <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()}</Link></h4>
+                    <h4><Link to={`/matches/${match._id}`}>{match.type.toUpperCase()} - {moment(match.time).format('dddd Do')}</Link></h4>
                   </div>
                 )}
               </div>
