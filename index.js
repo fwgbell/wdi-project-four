@@ -22,3 +22,5 @@ app.use('/api', router);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Up and running on port ${port}`));
+
+module.exports = app;
