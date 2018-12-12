@@ -41,6 +41,7 @@ function deleteRoute(req, res, next){
 function rateRoute(req, res, next){
   const ratings = req.body.ratings;
   Promise.all(ratings.map(rating => {
+    console.log('this rating is', rating);
     User
       .findById(rating._id)
       .then(user => {

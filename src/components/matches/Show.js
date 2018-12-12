@@ -48,7 +48,7 @@ class MatchShow extends React.Component{
       match: data.match._id
     };
     data.match.attending.forEach(function(player){
-      data[(player.username + 'iD')] = player._id;
+      if(player._id !== decodeToken().sub)data[(player.username + 'iD')] = player._id;
     });
     if(data.hostHostRating){
       const hostObject = {
@@ -63,11 +63,13 @@ class MatchShow extends React.Component{
       delete data.hostSkillRating;
     }
     delete data.match;
+    console.log(Object.keys(data));
     for(let i = 0; i < Object.keys(data).length; i = i + 3){
+      const inOrder = Object.keys(data).sort();
       const playerObject = {
-        chillRating: data[Object.keys(data)[i]],
-        skillRating: data[Object.keys(data)[i + 1]],
-        _id: data[Object.keys(data)[i + 2]]
+        chillRating: data[inOrder[i]],
+        skillRating: data[inOrder[i + 1]],
+        _id: data[inOrder[i + 2]]
       };
       sendObject.ratings.push(playerObject);
     }
