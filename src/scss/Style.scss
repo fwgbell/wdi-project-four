@@ -309,6 +309,11 @@ main{
       width: 100%;
       padding: 1rem;
       margin-bottom: 30px;
+      background-color: rgb(34, 34, 34);
+      color: rgb(231, 231, 231);
+      label{
+        color: rgb(231, 231, 231);
+      }
       .sliderControl{
         display: flex;
         p{

@@ -11,7 +11,8 @@ const userIds = [
   '5bf17051d4a071297aa4b6eb',
   '5bf17051d4a071297aa4b6ec',
   '5bf17051d4a071297aa4b6ed',
-  '5bf17051d4a071297aa4b6ee'];
+  '5bf17051d4a071297aa4b6ee',
+  '5bf17051d4a071297aa4b6ef'];
 
 const pitchIds = ['5c0d442bf8d7918360005c4d', '5c0d442bf8d7918360005c50'];
 
@@ -71,7 +72,36 @@ const userData = [{
   chillRating: [5],
   skillRating: [1],
   hostRating: [5]
-
+}, {
+  _id: userIds[4],
+  username: 'Robinho',
+  email: 'r@r',
+  password: 'pass',
+  profilePicture: 'https://media.licdn.com/dms/image/C4D03AQG-0jJSbuyp3w/profile-displayphoto-shrink_800_800/0?e=1550102400&v=beta&t=41qRIa_t1XkH7sMjoZLwhC7ESa-hsDKQDKIFEkHeYac',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
+  role1: 'Striker',
+  role2: 'Top Man',
+  club: 'West Ham United',
+  country: 'Brazil',
+  likes: [userIds[0]],
+  chillRating: [5],
+  skillRating: [5],
+  hostRating: [5]
+}, {
+  _id: userIds[5],
+  username: 'So-Fire🔥',
+  email: 's@s',
+  password: 'pass',
+  profilePicture: 'https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/10407325_10202372398024000_613931001574487144_n.jpg?_nc_cat=101&_nc_ht=scontent-lhr3-1.xx&oh=4994e5bdbb9c4fb5ba9d9065ffa931d5&oe=5C914170',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod',
+  role1: 'Striker',
+  role2: 'Top Man',
+  club: 'Wolverhampton',
+  country: 'Egypt',
+  likes: [userIds[0]],
+  chillRating: [5],
+  skillRating: [5],
+  hostRating: [5]
 }];
 
 const matchData = [{
@@ -80,20 +110,35 @@ const matchData = [{
   endTime: 'Mon Dec 10 2018 13:45:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Kick-About',
   pitch: pitchIds[0],
-  attending: [userIds[0], userIds[2], userIds[3]]
+  attending: [userIds[0], userIds[2], userIds[3], userIds[4], userIds[5]]
 }, {
   hostedBy: userIds[2],
   time: 'Tue Dec 11 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
   endTime: 'Tue Dec 11 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Kick-About',
-  pitch: pitchIds[0]
+  pitch: pitchIds[0],
+  attending: [userIds[0], userIds[2], userIds[3], userIds[4], userIds[5]]
 }, {
   hostedBy: userIds[1],
   time: 'Sat Dec 15 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
   endTime: 'Sat Dec 15 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
   type: 'Baby',
   pitch: pitchIds[0],
-  attending: [userIds[0], userIds[2], userIds[3]]
+  attending: [userIds[0], userIds[2], userIds[3], userIds[4], userIds[5]]
+}, {
+  hostedBy: userIds[1],
+  time: 'Thu Dec 13 2018 17:15:00 GMT+0000 (Greenwich Mean Time)',
+  endTime: 'Thu Dec 13 2018 17:20:28 GMT+0000 (Greenwich Mean Time)',
+  type: 'Kick-About',
+  pitch: pitchIds[0],
+  attending: [userIds[0], userIds[2], userIds[3], userIds[4], userIds[5]]
+}, {
+  hostedBy: userIds[1],
+  time: 'Fri Dec 14 2018 12:15:00 GMT+0000 (Greenwich Mean Time)',
+  endTime: 'Fri Dec 14 2018 12:20:28 GMT+0000 (Greenwich Mean Time)',
+  type: 'Headers and Volleys',
+  pitch: pitchIds[1],
+  attending: [userIds[0], userIds[2], userIds[3], userIds[4], userIds[5]]
 }];
 
 const messageData = [
