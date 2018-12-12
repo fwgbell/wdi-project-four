@@ -21,6 +21,10 @@ class Header extends React.Component {
       <nav className="navbar">
         <div className="navbar-brand">
           <img src="https://savethepitch.files.wordpress.com/2017/02/cropped-white-save-logo-copy.jpg"/>
+          <div>
+            <a href="https://www.instagram.com/savethepitch/"><i className="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/savethepitch?lang=en"><i className="fab fa-twitter-square"></i></a>
+          </div>
         </div>
         <div className="navbar-end">
           <div className="navbar-item has-dropdown is-hoverable">
@@ -30,6 +34,7 @@ class Header extends React.Component {
                 <Link className="navbar-item" to={'/'}>Home</Link>
                 <Link className="navbar-item" to={'/pitches'}>Pitches</Link>
                 <Link className="navbar-item" to={'/pitches/map'}>Pitch Map</Link>
+                <a className="navbar-item" href='https://www.depop.com/savethepitch/savethepitch-savethepitch-football-streetfootball-london-art'>Store</a>
                 {isAuthenticated() && <Link className="navbar-item" to={'/pitches/new'}>Add a pitch</Link>}
                 {isAuthenticated() && <Link className="navbar-item" to={'/matches/new'}>Host a match</Link>}
                 {isAuthenticated() && <Link className="navbar-item" to="/messages">Messages</Link>}

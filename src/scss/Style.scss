@@ -9,6 +9,18 @@
     img{
       height: 10vh;
     }
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: 10px;
+      a{
+        color: white;
+        font-size: 30px;
+        margin-top: -6px;
+      }
+    }
   }
   .navbar-item.has-dropdown.is-hoverable .navbar-link{
     background-color: rgb(34, 34, 34);
@@ -42,6 +54,9 @@
     }
   }
   @media only screen and (max-width: 1088px) {
+    img{
+      width: 330px;
+    }
     .navbar-link{
       padding: 0;
       width: 100vw;
