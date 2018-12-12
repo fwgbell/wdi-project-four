@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { decodeToken } from '../../lib/auth';
+import { Link } from 'react-router-dom';
 
 
 function Conversation({ userId, messages, newThread, users, handleChange }) {
@@ -47,7 +48,7 @@ function Conversation({ userId, messages, newThread, users, handleChange }) {
             :
             <div key={message._id} className="toUser">
               <p>
-                <strong>{message.from.username} </strong>
+                <strong><Link to={`/profile/${message.from._id}`}>{message.from.username}</Link></strong>
                 {message.content}
                 <br />
                 <small>{moment(message.createdAt).fromNow()}</small>

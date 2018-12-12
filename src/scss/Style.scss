@@ -778,10 +778,13 @@ main{
     justify-content: center;
     .sidebar {
       padding: 10px 0 10px 0;
+      color: rgb(231, 231, 231);
       border: 5px solid;
+      border-color: rgb(70, 70, 70);
       border-right: 0;
       border-radius: 2px;
       min-width: 150px;
+      background-color: rgb(34, 34, 34);
       div{
         display: flex;
         align-items: center;
@@ -790,6 +793,14 @@ main{
         width: 100%;
         button{
           margin-bottom: 10px;
+          padding: 0;
+          background-color: transparent;
+          border: 0;
+          font-size: 30px;
+          color: white;
+        }
+        button:hover{
+          opacity: 0.7;
         }
       }
       .active{
@@ -803,12 +814,16 @@ main{
         font-size: 16px;
         width: 100%;
       }
+      p:hover{
+        color: white;
+      }
     }
     .messages-main {
       flex-basis: 70%;
       display: flex;
       flex-direction: column;
       border: 5px solid;
+      border-left: 0;
       border-radius: 2px;
       .conversation {
         height: 90%;
@@ -816,8 +831,10 @@ main{
         padding: 10px;
         background-color: #ece5dd;
         border-bottom: 5px solid;
+        border-left: 5px solid;
         .matchMessage{
           background-color: #34b7f1;
+          margin-top: -10px;
           margin-bottom: 10px;
           padding: 5px;
           text-align: center;
@@ -853,7 +870,9 @@ main{
           box-shadow: 3px 3px;
           p{
             strong{
-              color: orange;
+              a{
+                color: orange;
+              }
               margin-right: 10px;
             }
             margin-left: 20px;
@@ -863,7 +882,18 @@ main{
       .compose {
         flex-basis: 10%;
         padding: 10px;
+        background-color: rgb(34, 34, 34);
       }
+    }
+    @media only screen and (max-width: 800px) {
+      flex-direction: column;
+      height: 120vh;
+      margin-top: -70px;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    h1{
+      display: none;
     }
   }
 }
@@ -906,10 +936,11 @@ main{
     }
     i{
       cursor: pointer;
-      transition: font-size 2s;
+      transition: transform 2s;
+      margin-left: 5px
     }
     i:hover{
-      font-size: 40px;
+      transform: rotate(360deg);
     }
     img{
       width: 50%;

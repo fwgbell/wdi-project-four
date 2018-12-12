@@ -16,7 +16,7 @@ function Compose({ handleChange, handleClick, newMessage }) {
         </div>
         <nav className="level">
           <div className="level-item">
-            <a className="button is-rounded" onClick={handleClick}>Submit</a>
+            <a className="button is-rounded" onClick={handleClick}>Send</a>
           </div>
         </nav>
       </div>

@@ -19,7 +19,7 @@ class Messages extends React.Component {
 
   newThread(){
     axios.get('/api/users', authorizationHeader())
-      .then(result => this.setState({ users: result.data, newThread: true }));
+      .then(result => this.setState({ users: result.data, newThread: true, conversationUserId: '' }));
   }
 
   chooseConversation(userId) {
