@@ -91,7 +91,7 @@ class PitchShow extends React.Component {
             <section className="column is-6">
               <h2>{pitch.name}</h2>
               <div className="columns">
-                <div className="column is-6">
+                <div className="column is-6 infoWrapper">
                   {pitch.averageRating?
                     <p>Pitch Score: {pitch.averageRating}/5.0</p>
                     :

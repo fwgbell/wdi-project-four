@@ -29,7 +29,7 @@ class Header extends React.Component {
               <div className="navbar-dropdown is-boxed">
                 <Link className="navbar-item" to={'/'}>Home</Link>
                 <Link className="navbar-item" to={'/pitches'}>Pitches</Link>
-                <Link className="navbar-item" to={'/pitches/map'}>Map</Link>
+                <Link className="navbar-item" to={'/pitches/map'}>Pitch Map</Link>
                 {isAuthenticated() && <Link className="navbar-item" to={'/pitches/new'}>Add a pitch</Link>}
                 {isAuthenticated() && <Link className="navbar-item" to={'/matches/new'}>Host a match</Link>}
                 {isAuthenticated() && <Link className="navbar-item" to="/messages">Messages</Link>}

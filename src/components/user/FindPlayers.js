@@ -87,13 +87,14 @@ class FindPlayers extends React.Component {
               <div className="profileEmblems">
                 <img className="profileLogo" src={profile.clubLogo}/>
                 <div className="profileButtons">
-                  <button onClick={this.dislike} className="button">🤢</button>
-                  <button onClick={this.like} className="button">❤️</button>
+                  <button onClick={this.dislike} className="button"><i className="fas fa-times"></i></button>
+                  <button onClick={this.like} className="button"><i className="fas fa-heart"></i></button>
                 </div>
               </div>
               <img className="profilePicture" src={profile.profilePicture}/>
+              <div className="profileRatings">{ profile.averageChill && <p><i className="fas fa-snowflake"></i> {profile.averageChill} <i className="fas fa-running"></i> {profile.averageSkill} <i className="fas fa-futbol"></i> {profile.averageHost}</p>}</div>
               <h2>Preferred Role: {profile.role1}</h2>
-              <h3>Secondary Role: {profile.role2}</h3>
+              <h3>Back-up Role: {profile.role2}</h3>
               <p><strong>Bio:</strong> {profile.bio}</p>
             </div>
           </div>

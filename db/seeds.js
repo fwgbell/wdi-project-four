@@ -36,7 +36,10 @@ const userData = [{
   role1: 'Striker',
   role2: 'Top Man',
   club: 'Arsenal',
-  country: 'England'
+  country: 'England',
+  chillRating: [5],
+  skillRating: [3],
+  hostRating: [5]
 }, {
   _id: userIds[2],
   username: 'Francis-dinho',
@@ -48,7 +51,11 @@ const userData = [{
   role2: 'Top Man',
   club: 'Crystal Palace',
   country: 'China',
-  likes: [userIds[0]]
+  likes: [userIds[0]],
+  chillRating: [5],
+  skillRating: [3],
+  hostRating: [5]
+
 }];
 
 const matchData = [{
@@ -128,7 +135,7 @@ mongoose.connect(dbURI, (err, db) => {
     name: 'Berner Pitch',
     lat: 51.512483,
     lng: -0.063817,
-    image: 'https://savethepitch.files.wordpress.com/2017/02/milkwood-community-park.jpg',
+    image: 'https://savethepitch.files.wordpress.com/2017/02/brixton-station-road.jpg',
     reviews: [{
       title: 'Too good 😤',
       reviewedBy: userIds[0],

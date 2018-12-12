@@ -49,7 +49,7 @@ class Profile extends React.Component {
       <div className="profilePage">
         {profile
           ?
-          <div className={`columns ${profile.club.replace('&', '').split(' ').join('-')}`}>
+          <div className={`columns profileWrapper ${profile.club.replace('&', '').split(' ').join('-')}`}>
             <div className="column">
               <div className="fifaCard">
                 <div className="cardHead">
@@ -61,8 +61,9 @@ class Profile extends React.Component {
                     {this.state.countryImage && <img className="profileFlag" src={this.state.countryImage}/>}
                   </div>
                   <img className="profilePicture" src={profile.profilePicture}/>
+                  <div className="profileRatings">{ profile.averageChill && <p><i className="fas fa-snowflake"></i> {profile.averageChill} <i className="fas fa-running"></i> {profile.averageSkill} <i className="fas fa-futbol"></i> {profile.averageHost}</p>}</div>
                   <h2>Preferred Role: {profile.role1}</h2>
-                  <h3>Secondary Role: {profile.role2}</h3>
+                  <h3>Back-up Role: {profile.role2}</h3>
                   <p><strong>Bio:</strong> {profile.bio}</p>
                 </div>
               </div>

@@ -124,7 +124,7 @@ userSchema.virtual('hosting', {
 
 userSchema.virtual('averageSkill')
   .get(function() {
-    if(this.skillRating.length === 0) return 'Not yet rated';
+    if(this.skillRating.length === 0) return '⚽️';
     const avg = this.skillRating.reduce((sum, rating) => {
       return sum + rating;
     }, 0) / this.skillRating.length;
@@ -133,7 +133,7 @@ userSchema.virtual('averageSkill')
   });
 userSchema.virtual('averageChill')
   .get(function() {
-    if(this.chillRating.length === 0) return 'Not yet rated';
+    if(this.chillRating.length === 0) return '⚽️';
     const avg = this.chillRating.reduce((sum, rating) => {
       return sum + rating;
     }, 0) / this.chillRating.length;
@@ -142,7 +142,7 @@ userSchema.virtual('averageChill')
   });
 userSchema.virtual('averageHost')
   .get(function() {
-    if(this.hostRating.length === 0) return 'Not yet rated';
+    if(this.hostRating.length === 0) return '⚽️';
     const avg = this.hostRating.reduce((sum, rating) => {
       return sum + rating;
     }, 0) / this.hostRating.length;

@@ -10,7 +10,7 @@
     "start:client": "webpack-dev-server",
     "seed": "node db/seeds",
     "test:client": "mocha --require test/client/helper \"test/client/**/*_spec.js\" --recursive --exit",
-    "test:server": "nyc mocha test/**/*_spec.js --require test/server/helper --recursive --exit"
+    "test:server": "nyc mocha test/server/**/*_spec.js --require test/server/helper --recursive --exit"
   },
   "devDependencies": {
     "atob": "^2.1.1",
