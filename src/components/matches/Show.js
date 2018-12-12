@@ -166,7 +166,7 @@ class MatchShow extends React.Component{
               {canRate && match.attending.length > 0 &&
               <form  className="columns is-multiline" onSubmit={this.handleSubmit}>
                 {match.hostedBy._id !== decodeToken().sub &&
-                    <div className="column is-3">
+                    <div className="ratingInputs column is-3">
                       <h2>{ match.hostedBy.username} (HOST)</h2>
                       <div className="field">
                         <label className="label">Host Rating {this.state.hostHostRating && '('+this.state.hostHostRating+')'}</label>
@@ -193,7 +193,7 @@ class MatchShow extends React.Component{
                     player._id === decodeToken().sub ?
                       <p key={player._id}></p>
                       :
-                      <div className="column is-3" key={player._id}>
+                      <div className="ratingInputs column is-3" key={player._id}>
                         <h2>{ player.username}</h2>
                         <div className="field">
                           <label className="label">Chill Rating {this.state[(player.username + 'ChillRating')] && '('+this.state[(player.username + 'ChillRating')]+')'}</label>

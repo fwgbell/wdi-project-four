@@ -800,6 +800,11 @@ main{
         color: rgb(34, 34, 34);
       }
     }
+    @media only screen and (max-width: 800px) {
+      h2{
+        font-size: 20px;
+      }
+    }
   }
   .matchPlayer{
     border: 3px solid rgb(231, 231, 231);
@@ -826,9 +831,18 @@ main{
       }
     }
   }
+  .ratingInputs{
+    h2{
+      font-size: 30px;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .ratingFormSubmit{
     margin-top: 20px;
     margin-bottom: 50px;
+    margin-left: 37%;
   }
 }
 .messagesPage{
