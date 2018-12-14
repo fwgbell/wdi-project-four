@@ -114,7 +114,7 @@ class MatchShow extends React.Component{
               {match.hostedBy._id === decodeToken().sub ?
                 <div>
                   <button className="button is-rounded" onClick={this.cancelMatch}>Call Off Match</button>
-                  <Link to={`/matches/${this.props.match.params.id}/edit`}><button>Edit Match</button></Link>
+                  <Link to={`/matches/${this.props.match.params.id}/edit`}><button className="button is-rounded">Edit Match</button></Link>
                 </div>
                 :
                 <div>
@@ -210,7 +210,9 @@ class MatchShow extends React.Component{
                       </div>
                   )
                 }
-                <button className="ratingFormSubmit button is-rounded">Submit</button>
+                <div className="column is-12 buttonWrapperMatchPage">
+                  <button className="ratingFormSubmit button is-rounded">Submit</button>
+                </div>
               </form>}
             </div>
           :

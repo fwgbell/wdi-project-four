@@ -183,10 +183,10 @@ class PitchShow extends React.Component {
                   </div>
                   { !this.state.editing
                     ?
-                    <button onClick={this.handleSubmit} className="button is-rounded is-info">Submit</button>
+                    <button onClick={this.handleSubmit} className="button is-rounded">Submit</button>
                     :
                     <div>
-                      <button onClick={this.handleUpdate} className="button is-rounded is-info">Update</button>
+                      <button onClick={this.handleUpdate} className="button is-rounded">Update</button>
                       <button onClick={this.cancelEdit} className="button is-rounded is-primary">Cancel</button>
                     </div>
                   }

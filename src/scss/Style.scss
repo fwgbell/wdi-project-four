@@ -490,7 +490,6 @@ main{
       height: 100%;
       width: 80%;
       padding: 40px;
-      overflow-y: scroll;
       @media only screen and (max-width: 800px) {
         padding: 10px;
         border-radius: 25px;
@@ -850,11 +849,18 @@ main{
     flex-direction: column;
     align-items: center;
     border: 5px solid;
+    height: 270px;
   }
-  .ratingFormSubmit{
-    margin-top: 20px;
-    margin-bottom: 50px;
-    margin-left: 40%;
+  .buttonWrapperMatchPage{
+    display: flex;
+    justify-content: center;
+    .ratingFormSubmit{
+      height: 100px;
+      width: 200px;
+      font-size: 40px;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
   }
 }
 .messagesPage{
