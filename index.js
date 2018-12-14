@@ -19,6 +19,8 @@ app.use(morgan('dev'));
 
 app.use('/api', router);
 
+app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Up and running on port ${port}`));
