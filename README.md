@@ -47,28 +47,33 @@ ___
 
 ## Brief
 
-I had to:
+* Build a full-stack application by making your own backend and your own front-end
+* Use an Express API to serve your data from a Mongo database
+* Consume your API with a separate front-end built with React
+* Be a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models
+* Implement thoughtful user stories that are significant enough to help you know which features are core MVP and which you can cut
+* Have a visually impressive design to kick your portfolio up a notch.
+* Be deployed online so it's publicly accessible.
+* Have automated tests for at least one RESTful resource on the back-end.
 
-* **Render a grid-based game in the browser**
-* **Switch turns** between two players
-* **Design logic for winning** & **visually display which player won**
-* **Include separate HTML / CSS / JavaScript files**
-* Use **Javascript or jQuery** for **DOM manipulation**
-* Use **semantic markup** for HTML and CSS (adhere to best practices)
 
 ---
 
 ## Technologies Used:
 
+* HTML5
+* SCSS
+* JavaScript (ECMAScript 6)
+* React.js
 * Node.js
-* EJS
-* Express.js
-* CSS3 with animation
-* Javascript (ECMAScript6)
+* MongoDB
+* Mocha
+* Chai
 * Git
 * GitHub
-* Google Fonts
-
+* Heroku
+* Trello
+* Fontawesome
 
 ___
 
@@ -76,35 +81,59 @@ ___
 
 ### Functionality
 
-To begin the project I started work on my grid. I created a for loop that would use jQuery to create hundreds of numbered divs on my page and then it "cut out" the middle section I wanted to use. This gave me the grid size i wanted with each square having its own identifier number within it and meant that numbers at the edge of the grid weren't consecutive with numbers on the opposite side. This was intentional to stop movement over the edge of my map.
-
-I then used objects to store the stats and location of my characters and worked on functions to handle their movement and attacks using the identifier numbers of my grid. All of this is controlled with the mouse and any changes that take place change the data in each characters object.
+For this project I set myself quite a simple minimum viable product, a pitch data base where users could login, upload and review football pitches. While planning I then came up with many more features that I could work on implementing to improve the app once I had reached this M.V.P., such as the match hosting features and review system. This made my use of the short amount of time we had very efficient and I was able to add a lot of functionality to the app to make it very feature rich.
 
 #### Featured piece of code 1
 
-This piece of code generates the grid and numbers the squares accordingly. The large if statement selects the grid squares I wanted to keep for my game board. Further in my code all of the 'not-enterable' divs are removed from the page.
+This is a function from my find players section of the app. It's very similar to how Tinder matches users. The user is shown other users profiles and can like or dislike them. If the current user likes a profile of another user that has liked them back then the two users are "matched" and connected in the messenger section of the app.
+
+The start of the if block below checks to see if the currently viewed profile contains the currently logged in user's ID in it's likes array. If this is truthy then the two users like each other and it's a match. Axios is then used to make a post request to my likedEachother route in the backend which will pair the users in the messenger. The currently viewed profile is set to match on state to create a pop-up on screen asking the user if they'd like to message them now or keep on finding players.
+
+In the else part of the function it is not a match so the like is posted to the back end to be saved to the database but a match is not displayed and the users aren't connected in the messenger.
 
 ``` JavaScript
-for(let i = 1; i < 600 ; i++){
-  const $newDiv = $('<div></div>').addClass('not-enterable');
-  $container.append($newDiv);
-  if (i > 125 && i < 145 || i > 155 && i < 174 || i > 185 && i < 204 || i > 215 && i < 234
-    || i > 245 && i < 264 || i > 275 && i < 294 || i > 305 && i < 324 || i > 335 && i < 354
-    || i > 365 && i < 384 || i > 395 && i < 414 || i > 425 && i < 444 || i > 455 && i < 474){
-    $newDiv.attr('class', 'grid-square');
-    $newDiv.html(i);
-  }
-  if(i < 154 || i > 445){
-    $newDiv.attr('class', 'not-enterable');
-    $newDiv.html('');
+like(){
+  console.log('liked!', this.state.profile);
+  if(this.state.profile.likes.includes(decodeToken().sub)){
+    const sendObject = {
+      _id: this.state.profile._id
+    };
+    axios.post('/api/likedEachother', sendObject, authorizationHeader())
+      .then(result => this.setState({ match: this.state.profile, liked: sendObject._id, users: result.data }, this.sortUsers));
+  } else{
+    const sendObject = {
+      _id: this.state.profile._id
+    };
+    axios.post('/api/like', sendObject, authorizationHeader())
+      .then(result => this.setState({ liked: sendObject._id, users: result.data }, this.sortUsers));
   }
 }
 ```
-### MVP
 
-This is a screenshot of when I felt I had reached my minimum viable product as my game now met every requirement of the brief.
+This is the route in the backend which will connect users who have matched with each other by creating a match message between them. As well as saving the request body in the likes array of the current user.
 
-![screenshot of mvp](screenshots/mvp.png)
+``` JavaScript
+function matchProfile(req, res, next){
+  const matchMessage = {
+    from: req.currentUser._id,
+    to: req.body._id,
+    content: 'You two are a match!!',
+    matchMessage: true
+  };
+  User
+    .findById(req.currentUser._id)
+    .then(user => {
+      user.likes.push(req.body);
+      return user.save();
+    })
+    .then(Message.create(matchMessage)
+      .then(User
+        .find()
+        .then(users => res.json(users)))
+    )
+    .catch(next);
+}
+```
 
 ### Styling
 
@@ -119,12 +148,6 @@ bit of css{
 }
 
 ```
-
-### Adding new features
-
-blablabla about more variety in gameplay
-
-___
 
 ## Wins and Blockers
 
