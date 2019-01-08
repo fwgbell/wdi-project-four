@@ -138,12 +138,13 @@ function matchProfile(req, res, next){
 
 ### Styling
 
-At this point in production I had only done minimal styling and had mainly focused on the logic to make sure my game ran. Next I focused on styling the game to make it more visually appealing to the user and to give more feedback on their interactions.
+For the styling on this app I made use of SCSS and Bulma (an open source css framework). The design I was aiming for
+A key feature I wanted for this app was it to be fully mobile responsive. To achieve this I used a combination of Bulma's columns classes and a number of media queries to adjust the layout for a smaller screen.
 
 
 #### Featured piece of code 2
 
-A feature I added to make user profiles more unique and visually appealing was to give them colour themes based on the club they support. When a user registers they can select which Premier League team they support from a drop down, or select "None of the above", then I made a different class for each of these options with colour codes from the clubs badge. Some examples of this are below.
+A feature I added to make user profiles more unique and visually appealing was to give them colour themes based on the club they support. When a user registers they can select which Premier League team they support from a drop down, or select "None of the above", then I made a different class for each of these options with colour codes from the club's badge. Some examples of this are below.
 
 ``` CSS
 .Leicester-City{
@@ -180,11 +181,6 @@ This is where the class name is added using the club name saved to the profile
 ``` JavaScript
 <div className={`columns profileWrapper ${profile.club.replace('&', '').split(' ').join('-')}`}>
 ```
-## Wins and Blockers
-
-blablabla
-
-
 ___
 
 ## Future Features
