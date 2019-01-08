@@ -8,9 +8,6 @@ The aim with Save the Pitch was to create an app that would get young people awa
 
 The application was made using an Express back-end and React front-end using several node modules such as leaflet and moment, to make the most of mapping and timings respectively. This was the first time I’d worked with maps and distances on a project and it was a really difficult challenge to begin with but I’m pleased with how I was able to implement them in the end and I think they really add a lot of utility to the app.
 
-The part I’m most proud of is the messaging section of the app. Being able to message your friends in real-time back and forth made the app feel more real.
-
-
 ___
 
 ## Screenshot Walk-through
@@ -47,7 +44,7 @@ ___
 
 ## Brief
 
-* Build a full-stack application by making your own backend and your own front-end
+* Build a full-stack application by making your own backend and your own front-end in 7 days.
 * Use an Express API to serve your data from a Mongo database
 * Consume your API with a separate front-end built with React
 * Be a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models
@@ -138,7 +135,9 @@ function matchProfile(req, res, next){
 
 ### Styling
 
-For the styling on this app I made use of SCSS and Bulma (an open source css framework). The design I was aiming for
+For the styling on this app I made use of SCSS and Bulma (an open source css framework). The design I was aiming for was minimalist, user friendly and accessible while still looking on trend and urban to fit with the content.
+
+
 A key feature I wanted for this app was it to be fully mobile responsive. To achieve this I used a combination of Bulma's columns classes and a number of media queries to adjust the layout for a smaller screen.
 
 
@@ -185,8 +184,12 @@ ___
 
 ## Future Features
 
-blablabla
+I'm pleased with the product I was able to produce however there were still a number of features I didn't have time to include in my final piece due to the strict time constraints.
 
-* bla
-* bla
-* bla
+If I had more time to work on the app I would have liked to add the ability for players/users to group up in to teams and then track their results as they play against other teams of users possibly even implementing a league system of some sort. This would add another way to encourage people to keep using the app and to keep going out to play football.
+
+A minor tweak I would've liked on the find players section would be an actual 'swipe' event listener - with animations - instead of tap buttons to achieve that "Tinder-esque" feel.
+
+With more time I would of also liked to include a way to get directions to the pitches from the map or pitch show pages, possibly even consuming the google maps api to achieve this.
+
+Finally to improve the connectivity side of the app I would liked to have made a number of improvements such as push notifications, ordering chats and messages by most recent, integrate a websocket so the other user's messages can be viewed immediately without refreshing the page and maybe the possibility to link other social media accounts to this one, such as facebook or instagram.
