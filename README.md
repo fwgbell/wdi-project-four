@@ -67,6 +67,7 @@ ___
 * React.js
 * Node.js
 * MongoDB
+* External API (restcountries)
 * Mocha
 * Chai
 * Git
@@ -142,13 +143,43 @@ At this point in production I had only done minimal styling and had mainly focus
 
 #### Featured piece of code 2
 
+A feature I added to make user profiles more unique and visually appealing was to give them colour themes based on the club they support. When a user registers they can select which Premier League team they support from a drop down, or select "None of the above", then I made a different class for each of these options with colour codes from the clubs badge. Some examples of this are below.
+
 ``` CSS
-bit of css{
-  which-is: good;
+.Leicester-City{
+  background-color: #003090;
+  .fixtureStripe{
+    background-color: white;
+    color: #FDBE11;
+    a{
+      color: #FDBE11;
+    }
+    hr{
+      background-color: #FDBE11;
+    }
+  }
+}
+.Arsenal{
+  background-color: #EF0107;
+  .fixtureStripe{
+    background-color: #063672;
+    color: #9C824A;
+    a{
+      color: #9C824A;
+    }
+    hr{
+      background-color: #9C824A;
+    }
+  }
 }
 
 ```
 
+This is where the class name is added using the club name saved to the profile
+
+``` JavaScript
+<div className={`columns profileWrapper ${profile.club.replace('&', '').split(' ').join('-')}`}>
+```
 ## Wins and Blockers
 
 blablabla
