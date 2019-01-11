@@ -10,38 +10,6 @@ The application was made using an Express back-end and React front-end using sev
 
 ___
 
-## Screenshot Walk-through
-
-### Home page
-
-![Home page](screenshots/home-page.png)
-
-### The pitch index page. This can be sorted by closest to you, average review rating or next to have an event taking place.
-
-![Index page](screenshots/index-page.png)
-
-### This map page can be used to see near pitches to your current location
-
-![Map page](screenshots/map-page.png)
-
-### Find page. This is the page for finding players to connect with and message.
-
-![Find page](screenshots/find.png)
-
-### This is a user's profile page. It displays their information and upcoming fixtures. The background is and colour scheme is determined by the club the user supports.
-
-![Profile page](screenshots/profile-page.png)
-
-### Messaging page. This page is where users can message back and forth to arrange or discuss pitches and matches
-
-![Messaging page](screenshots/messaging-page.png)
-
-### This is how the messaging page looks on mobile
-
-![Mobile messaging page](screenshots/mobile.png)
-
----
-
 ## Brief
 
 * Build a full-stack application by making your own backend and your own front-end in 7 days.
@@ -72,6 +40,38 @@ ___
 * Heroku
 * Trello
 * Fontawesome
+
+---
+
+## Screenshot Walk-through
+
+### Home page
+
+![Home page](screenshots/home-page.png)
+
+### The pitch index page. This can be sorted by closest to you, average review rating or next to have an event taking place.
+
+![Index page](screenshots/index-page.png)
+
+### This map page can be used to see near pitches to your current location
+
+![Map page](screenshots/map-page.png)
+
+### Find page. This is the page for finding players to connect with and message.
+
+![Find page](screenshots/find.png)
+
+### This is a user's profile page. It displays their information and upcoming fixtures. The background is and colour scheme is determined by the club the user supports.
+
+![Profile page](screenshots/profile-page.png)
+
+### Messaging page. This page is where users can message back and forth to arrange or discuss pitches and matches
+
+![Messaging page](screenshots/messaging-page.png)
+
+### This is how the messaging page looks on mobile
+
+![Mobile messaging page](screenshots/mobile.png)
 
 ___
 
@@ -182,6 +182,16 @@ This is where the class name is added using the club name saved to the profile
 ```
 ___
 
+## Wins and Blockers
+
+I think my biggest win for this project was the use of location of services I was able to implement. Being able to sort the pitch database to find the nearest pitch to your current location is a feature I could see myself desperately wanting from a real football app.
+
+I'm also proud of the mobile responsiveness of my design as I felt that this app had to be accessible on the go.
+
+My biggest blocker on this was probably the time constraints. I only had 7 days to create this project and it was one I was quite excited to make. During planning I had come up with so many ideas and features that it became quite difficult to decide which ones were vital and which ones I should cut because I wouldn't have time for them. In the end I think I made the right choices on what to spend my time on and I think planning out a feature timeline is something I'll do on future work to avoid this issue again.
+I detail some of the ideas I didn't have time for in the next section.
+
+___
 ## Future Features
 
 I'm pleased with the product I was able to produce however there were still a number of features I didn't have time to include in my final piece due to the strict time constraints.
